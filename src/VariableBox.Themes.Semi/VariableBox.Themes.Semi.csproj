@@ -1,30 +1,31 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
-    <Import Project="../Package.props"/>
+    <Import Project="../Package.props" />
 
     <PropertyGroup>
         <TargetFramework>netstandard2.0</TargetFramework>
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
         <LangVersion>latest</LangVersion>
-        <Version>0.3.0-beta20240329</Version>
-        <Authors>IRIHI Technology Co., Ltd.</Authors>
+        <Version>0.0.1-beta20240404</Version>
+        <Authors>heartacker</Authors>
         <PackageId>VariableBox.Themes.Semi</PackageId>
-        <PackageIcon>irihi.png</PackageIcon>
+        <PackageIcon></PackageIcon>
         <PackageLicenseExpression>MIT</PackageLicenseExpression>
-        <PackageProjectUrl>https://github.com/irihitech/Ursa.Avalonia</PackageProjectUrl>
+        <PackageProjectUrl>https://github.com/heartacker/VariableBox.Avalonia</PackageProjectUrl>
+        <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
     </PropertyGroup>
 
     <ItemGroup>
-        <PackageReference Include="Avalonia" Version="$(AvaloniaVersion)"/>
+        <PackageReference Include="Avalonia" Version="$(AvaloniaVersion)" />
     </ItemGroup>
 
     <ItemGroup>
-        <ProjectReference Include="..\VariableBox\VariableBox.csproj"/>
+        <ProjectReference Include="..\VariableBox\VariableBox.csproj" />
     </ItemGroup>
 
     <ItemGroup>
-        <None Include="irihi.png" Pack="true" PackagePath=""/>
+        <None Include="irihi.png" Pack="true" PackagePath="" />
     </ItemGroup>
 
 </Project>
