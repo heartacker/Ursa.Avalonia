@@ -1,10 +1,10 @@
 using Avalonia;
 using Avalonia.Controls.ApplicationLifetimes;
 using Avalonia.Markup.Xaml;
-using Ursa.Demo.ViewModels;
-using Ursa.Demo.Views;
+using VariableBox.Demo.ViewModels;
+using VariableBox.Demo.Views;
 
-namespace Ursa.Demo;
+namespace VariableBox.Demo;
 
 public partial class App : Application
 {

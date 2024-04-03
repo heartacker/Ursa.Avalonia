@@ -3,7 +3,7 @@ using Avalonia.Controls;
 using Avalonia.Markup.Xaml;
 using Avalonia.Styling;
 
-namespace Ursa.Themes.Semi;
+namespace VariableBox.Themes.Semi;
 
 /// <summary>
 /// Notice: Don't set Locale if your app is in InvariantGlobalization mode.
@@ -16,9 +16,9 @@ public class SemiTheme: Styles
             { new CultureInfo("zh-CN"), "avares://Ursa.Themes.Semi/Locale/zh-CN.axaml" },
             { new CultureInfo("en-US"), "avares://Ursa.Themes.Semi/Locale/en-US.axaml" },
         });
-    
+
     private static readonly string _defaultResource = "avares://Ursa.Themes.Semi/Locale/zh-CN.axaml";
-    
+
     private readonly IServiceProvider? sp;
     public SemiTheme(IServiceProvider? provider = null)
     {
@@ -47,10 +47,10 @@ public class SemiTheme: Styles
             {
                 _locale = CultureInfo.InvariantCulture;
             }
-            
+
         }
     }
-    
+
     private static string TryGetLocaleResource(CultureInfo? locale)
     {
         if (Equals(locale, CultureInfo.InvariantCulture))

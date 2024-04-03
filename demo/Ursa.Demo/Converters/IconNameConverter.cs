@@ -8,7 +8,7 @@ using Avalonia.Data.Converters;
 using Avalonia.Media;
 using Avalonia.Metadata;
 
-namespace Ursa.Demo.Converters;
+namespace VariableBox.Demo.Converters;
 
 public class IconNameConverter: IValueConverter
 {

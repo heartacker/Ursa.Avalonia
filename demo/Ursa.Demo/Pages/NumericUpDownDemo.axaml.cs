@@ -3,10 +3,10 @@ using Avalonia.Controls;
 using Avalonia.Markup.Xaml;
 using System;
 using System.Diagnostics;
-using Ursa.Controls;
-using Ursa.Demo.ViewModels;
+using VariableBox.Controls;
+using VariableBox.Demo.ViewModels;
 
-namespace Ursa.Demo.Pages;
+namespace VariableBox.Demo.Pages;
 
 public partial class NumericUpDownDemo : UserControl
 {

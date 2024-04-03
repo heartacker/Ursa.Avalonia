@@ -23,8 +23,8 @@
     </ItemGroup>
 
     <ItemGroup>
-        <ProjectReference Include="..\..\src\Ursa.Themes.Semi\Ursa.Themes.Semi.csproj" />
-        <ProjectReference Include="..\..\src\Ursa\Ursa.csproj" />
+        <ProjectReference Include="..\..\src\VariableBox.Themes.Semi\VariableBox.Themes.Semi.csproj" />
+        <ProjectReference Include="..\..\src\VariableBox\VariableBox.csproj" />
     </ItemGroup>
 
     <ItemGroup>

@@ -1,6 +1,6 @@
 ﻿using CommunityToolkit.Mvvm.Messaging;
 
-namespace Ursa.Demo.ViewModels;
+namespace VariableBox.Demo.ViewModels;
 
 public class MainViewViewModel : ViewModelBase
 {

@@ -1,7 +1,7 @@
 ﻿using System.Globalization;
 using Avalonia.Data.Converters;
 
-namespace Ursa.Themes.Semi.Converters;
+namespace VariableBox.Themes.Semi.Converters;
 
 public class BooleansToOpacityConverter: IValueConverter
 {

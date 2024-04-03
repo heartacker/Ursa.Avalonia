@@ -1,6 +1,6 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 
-namespace Ursa.Demo.ViewModels;
+namespace VariableBox.Demo.ViewModels;
 
 public class ViewModelBase : ObservableObject
 {

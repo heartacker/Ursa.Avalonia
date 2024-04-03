@@ -5,7 +5,7 @@ using Avalonia.Controls;
 using Avalonia.Data.Converters;
 using Avalonia.Media;
 
-namespace Ursa.Demo.Converters;
+namespace VariableBox.Demo.Converters;
 
 public class IconNameToPathConverter: IValueConverter
 {

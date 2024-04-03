@@ -1,4 +1,4 @@
-﻿namespace Ursa.Demo.ViewModels;
+﻿namespace VariableBox.Demo.ViewModels;
 
 public class MainWindowViewModel : ViewModelBase
 {

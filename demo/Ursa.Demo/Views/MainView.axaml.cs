@@ -3,7 +3,7 @@ using Avalonia.Controls;
 using Avalonia.Interactivity;
 using Avalonia.Styling;
 
-namespace Ursa.Demo.Views;
+namespace VariableBox.Demo.Views;
 
 public partial class MainView : UserControl
 {

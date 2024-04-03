@@ -2,7 +2,7 @@ using System.Globalization;
 using Avalonia;
 using Avalonia.Data.Converters;
 
-namespace Ursa.Themes.Semi.Converters;
+namespace VariableBox.Themes.Semi.Converters;
 
 public class NavigationMenuItemLevelToMarginConverter: IMultiValueConverter
 {

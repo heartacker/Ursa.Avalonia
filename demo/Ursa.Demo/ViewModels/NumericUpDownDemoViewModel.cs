@@ -4,10 +4,9 @@ using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using System;
 using System.Globalization;
-using Ursa.Controls;
-using static System.Runtime.InteropServices.JavaScript.JSType;
+using VariableBox.Controls;
 
-namespace Ursa.Demo.ViewModels;
+namespace VariableBox.Demo.ViewModels;
 
 public partial class NumericUpDownDemoViewModel : ObservableObject
 {
@@ -60,8 +59,8 @@ public partial class NumericUpDownDemoViewModel : ObservableObject
         Array_HorizontalContentAlignment = Enum.GetValues(typeof(HorizontalAlignment));
         Array_HorizontalAlignment = Enum.GetValues(typeof(HorizontalAlignment));
         Array_ParsingNumberStyle = Enum.GetValues(typeof(NumberStyles));
-        NumericUIntUpDown numericUIntUpDown;
-        TextBox textBox;
+        // NumericUIntUpDown numericUIntUpDown;
+        // TextBox textBox;
 
     }
 

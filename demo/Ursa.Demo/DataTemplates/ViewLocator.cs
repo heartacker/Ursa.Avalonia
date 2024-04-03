@@ -1,9 +1,9 @@
 using System;
 using Avalonia.Controls;
 using Avalonia.Controls.Templates;
-using Ursa.Demo.Pages;
+using VariableBox.Demo.Pages;
 
-namespace Ursa.Demo.Converters;
+namespace VariableBox.Demo.Converters;
 
 public class ViewLocator: IDataTemplate
 {
@@ -11,7 +11,7 @@ public class ViewLocator: IDataTemplate
     {
         if (param is null) return null;
         var name = param.GetType().Name!.Replace("ViewModel", "");
-        var type = Type.GetType("Ursa.Demo.Pages."+name);
+        var type = Type.GetType("VariableBox.Demo.Pages."+name);
         if (type != null)
         {
             return (Control)Activator.CreateInstance(type)!;

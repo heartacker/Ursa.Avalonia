@@ -2,6 +2,7 @@
 using Avalonia;
 using Avalonia.Dialogs;
 using Avalonia.Media;
+using VariableBox.Demo;
 
 namespace Ursa.Demo.Desktop;
 

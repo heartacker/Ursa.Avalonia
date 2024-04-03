@@ -1,4 +1,4 @@
-﻿namespace Ursa.Common;
+﻿namespace VariableBox.Common;
 
 public enum Position
 {

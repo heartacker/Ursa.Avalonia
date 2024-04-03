@@ -1,6 +1,6 @@
 using Avalonia.Interactivity;
 
-namespace Ursa.Controls;
+namespace VariableBox.Controls;
 
 public class ValueChangedEventArgs<T>: RoutedEventArgs where T: struct, IComparable<T>
 {
@@ -11,5 +11,5 @@ public class ValueChangedEventArgs<T>: RoutedEventArgs where T: struct, ICompara
     }
     public T? OldValue { get; }
     public T? NewValue { get; }
-    
+
 }

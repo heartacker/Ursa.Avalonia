@@ -3,7 +3,7 @@ using Avalonia;
 using Avalonia.Data.Converters;
 using Avalonia.Media;
 
-namespace Ursa.Themes.Semi.Converters;
+namespace VariableBox.Themes.Semi.Converters;
 
 public class BrushToColorConverter: IValueConverter
 {

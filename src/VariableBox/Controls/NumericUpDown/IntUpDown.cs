@@ -2,7 +2,7 @@
 using Avalonia.Controls;
 using Avalonia.Utilities;
 
-namespace Ursa.Controls;
+namespace VariableBox.Controls;
 
 public class NumericIntUpDown : NumericUpDownBase<int>
 {

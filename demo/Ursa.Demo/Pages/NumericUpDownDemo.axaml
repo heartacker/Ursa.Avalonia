@@ -1,11 +1,11 @@
 ﻿<UserControl
-    x:Class="Ursa.Demo.Pages.NumericUpDownDemo"
+    x:Class="VariableBox.Demo.Pages.NumericUpDownDemo"
     xmlns="https://github.com/avaloniaui"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:u="https://irihi.tech/ursa"
-    xmlns:vm="using:Ursa.Demo.ViewModels"
+    xmlns:v="using:VariableBox.Controls"
+    xmlns:vm="using:VariableBox.Demo.ViewModels"
     d:DesignHeight="450"
     d:DesignWidth="800"
     x:CompileBindings="True"
@@ -13,7 +13,7 @@
     mc:Ignorable="d">
 
     <UserControl.Styles>
-        <Style Selector=":is(u|NumericUpDown)">
+        <Style Selector=":is(v|NumericUpDown)">
             <Setter Property="Width" Value="240" />
             <Setter Property="HorizontalAlignment" Value="Left" />
             <Setter Property="HorizontalContentAlignment" Value="Left" />
@@ -32,7 +32,7 @@
                 Grid.ColumnSpan="1"
                 Margin="10"
                 HorizontalAlignment="Stretch">
-                <u:NumericUIntUpDown
+                <v:NumericUIntUpDown
                     Name="numd"
                     Width="{Binding Width}"
                     HorizontalAlignment="{Binding HorizontalAlignment}"
@@ -71,24 +71,24 @@
             Grid.Column="0"
             HorizontalAlignment="Left">
             <StackPanel Grid.Row="1">
-                <u:NumericIntUpDown
+                <v:NumericIntUpDown
                     Name="input"
                     Classes="ClearButton"
                     InnerLeftContent="Age"
                     Step="1"
                     Watermark="Input Value"
                     Value="2" />
-                <u:NumericDoubleUpDown
+                <v:NumericDoubleUpDown
                     Name="inputDouble"
                     EmptyInputValue="1"
                     Step="0.5"
                     Value="3.1" />
-                <u:NumericByteUpDown
+                <v:NumericByteUpDown
                     Name="inputByte"
                     EmptyInputValue="1"
                     Step="1"
                     Value="3" />
-                <u:NumericIntUpDown
+                <v:NumericIntUpDown
                     Name="Drag_Int"
                     AllowDrag="True"
                     InnerLeftContent="Drag"
@@ -99,7 +99,7 @@
                 <!--  hex demo  -->
 
                 <!--  =================this is error usage  -->
-                <u:NumericUIntUpDown
+                <v:NumericUIntUpDown
                     Name="uint_HexNumber"
                     AllowDrag="False"
                     FormatString="{}{0:X8}"
@@ -110,7 +110,7 @@
                     Value="2" />
 
                 <!--  =================we should use AllowHexSpecifier  -->
-                <u:NumericUIntUpDown
+                <v:NumericUIntUpDown
                     Name="uint_AllowHexSpecifier"
                     HorizontalContentAlignment="Right"
                     AllowDrag="False"
@@ -122,7 +122,7 @@
                     Watermark="AllowHexSpecifier"
                     Value="2" />
 
-                <u:NumericUIntUpDown
+                <v:NumericUIntUpDown
                     Name="Consolas_uint"
                     HorizontalContentAlignment="Right"
                     AllowDrag="False"
@@ -144,7 +144,7 @@
             Orientation="Vertical">
 
             <CheckBox Content="AutoWidth" IsChecked="{Binding AutoWidth}" />
-            <u:NumericDoubleUpDown
+            <v:NumericDoubleUpDown
                 AllowDrag="True"
                 InnerLeftContent="Width"
                 IsEnabled="{Binding !AutoWidth}"
@@ -173,7 +173,7 @@
             <Label Content="ParsingNumberStyle" />
             <ComboBox ItemsSource="{Binding Array_ParsingNumberStyle}" SelectedItem="{Binding ParsingNumberStyle}" />
 
-            <u:NumericUIntUpDown
+            <v:NumericUIntUpDown
                 Name="nudV"
                 AllowSpin="True"
                 InnerLeftContent="Value"
@@ -181,9 +181,9 @@
                 IsReadOnly="False"
                 Value="{Binding Value, Mode=TwoWay}" />
 
-            <u:NumericUIntUpDown InnerLeftContent="Max" Value="{Binding Maximum}" />
+            <v:NumericUIntUpDown InnerLeftContent="Max" Value="{Binding Maximum}" />
 
-            <u:NumericUIntUpDown InnerLeftContent="Min" Value="{Binding Minimum}" />
+            <v:NumericUIntUpDown InnerLeftContent="Min" Value="{Binding Minimum}" />
 
             <Label Content="{Binding Step, StringFormat='Step {0}'}" />
             <Slider

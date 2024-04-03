@@ -1,7 +1,7 @@
 using Avalonia.Controls;
 using Avalonia.Interactivity;
 
-namespace Ursa.Demo.Views;
+namespace VariableBox.Demo.Views;
 
 public partial class MainWindow : Window
 {
