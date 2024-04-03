@@ -1,4 +1,4 @@
-﻿using System.Diagnostics;
+using System.Diagnostics;
 using System.Globalization;
 using System.Net.Mime;
 using System.Windows.Input;
@@ -11,15 +11,17 @@ using Avalonia.Data.Converters;
 using Avalonia.Input;
 using Avalonia.Interactivity;
 using Avalonia.Layout;
-using VariableBox;
 using VariableBox.Common;
+using VariableBox.Controls;
 
 namespace VariableBox.Controls;
 
 [TemplatePart(PART_Spinner, typeof(ButtonSpinner))]
 [TemplatePart(PART_TextBox, typeof(TextBox))]
 [TemplatePart(PART_DragPanel, typeof(Panel))]
-public abstract class NumericUpDown : TemplatedControl/* , IClearControl */
+[TemplatePart(PART_RepeatRead, typeof(RepeatButton))]
+[TemplatePart(PART_RepeatWrite, typeof(RepeatButton))]
+public abstract class NumericUpDown : TemplatedControl/*, IClearControl*/
 {
     public const string PART_Spinner = "PART_Spinner";
     public const string PART_TextBox = "PART_TextBox";
@@ -28,6 +30,12 @@ public abstract class NumericUpDown : TemplatedControl/* , IClearControl */
     protected internal ButtonSpinner? _spinner;
     protected internal TextBox? _textBox;
     protected internal Panel? _dragPanel;
+
+    public const string PART_RepeatRead = "PART_RepeatRead";
+    public const string PART_RepeatWrite = "PART_RepeatWrite";
+
+    protected RepeatButton? _repeatReadButton;
+    protected RepeatButton? _repeatWriteButton;
 
     private Point? _point;
     protected internal bool _updateFromTextInput;
@@ -136,16 +144,22 @@ public abstract class NumericUpDown : TemplatedControl/* , IClearControl */
         set => SetValue(ShowButtonSpinnerProperty, value);
     }
 
-    public static readonly StyledProperty<bool> IsUpdateValueWhenLostFocusProperty =
-        AvaloniaProperty.Register<NumericUpDown, bool>(nameof(IsUpdateValueWhenLostFocus), false);
+    public static readonly StyledProperty<bool> IsShowReadButtonProperty =
+        AvaloniaProperty.Register<NumericUpDown, bool>(nameof(IsShowReadButton), false);
 
-    /// <summary>
-    /// If true, the value will be updated when the user loses focus.
-    /// </summary>
-    public bool IsUpdateValueWhenLostFocus
+    public bool IsShowReadButton
     {
-        get => GetValue(IsUpdateValueWhenLostFocusProperty);
-        set => SetValue(IsUpdateValueWhenLostFocusProperty, value);
+        get => GetValue(IsShowReadButtonProperty);
+        set => SetValue(IsShowReadButtonProperty, value);
+    }
+
+    public static readonly StyledProperty<bool> IsShowWriteButtonProperty =
+        AvaloniaProperty.Register<NumericUpDown, bool>(nameof(IsShowWriteButton), false);
+
+    public bool IsShowWriteButton
+    {
+        get => GetValue(IsShowWriteButtonProperty);
+        set => SetValue(IsShowWriteButtonProperty, value);
     }
 
     public event EventHandler<SpinEventArgs>? Spinned;
@@ -209,14 +223,29 @@ public abstract class NumericUpDown : TemplatedControl/* , IClearControl */
         PointerPressedEvent.AddHandler(OnDragPanelPointerPressed, _dragPanel);
         PointerMovedEvent.AddHandler(OnDragPanelPointerMoved, _dragPanel);
         PointerReleasedEvent.AddHandler(OnDragPanelPointerReleased, _dragPanel);
+        OnApplyTemplateReadWrite(e);
     }
+
+    protected void OnApplyTemplateReadWrite(TemplateAppliedEventArgs e)
+    {
+        RepeatButton.ClickEvent.RemoveHandler(OnRead, _repeatReadButton);
+        RepeatButton.ClickEvent.RemoveHandler(OnWrite, _repeatWriteButton);
+
+        _repeatReadButton = e.NameScope.Find<RepeatButton>(PART_RepeatRead);
+        _repeatWriteButton = e.NameScope.Find<RepeatButton>(PART_RepeatWrite);
+
+        RepeatButton.ClickEvent.AddHandler(OnRead, _repeatReadButton);
+        RepeatButton.ClickEvent.AddHandler(OnWrite, _repeatWriteButton);
+
+    }
+
+    protected abstract void OnWrite(object sender, RoutedEventArgs e);
+
+    protected abstract void OnRead(object sender, RoutedEventArgs e);
 
     protected override void OnLostFocus(RoutedEventArgs e)
     {
-        if (IsUpdateValueWhenLostFocus)
-        {
-            CommitInput(true);
-        }
+        CommitInput(true);
         base.OnLostFocus(e);
         if (AllowDrag && _dragPanel is not null)
         {
@@ -481,8 +510,8 @@ public abstract class NumericUpDownBase<T> : NumericUpDown where T : struct, ICo
     }
 
 
-    public static readonly StyledProperty<ICommand?> CommandProperty = AvaloniaProperty.Register<NumericUpDownBase<T>, ICommand?>(
-        nameof(Command));
+    #region command
+    public static readonly StyledProperty<ICommand?> CommandProperty = AvaloniaProperty.Register<NumericUpDownBase<T>, ICommand?>(nameof(Command));
 
     public ICommand? Command
     {
@@ -499,14 +528,6 @@ public abstract class NumericUpDownBase<T> : NumericUpDown where T : struct, ICo
         set => this.SetValue(CommandParameterProperty, value);
     }
 
-    private void InvokeCommand(object? cp)
-    {
-        if (this.Command != null && this.Command.CanExecute(cp))
-        {
-            this.Command.Execute(cp);
-        }
-    }
-
     /// <summary>
     /// Defines the <see cref="ValueChanged"/> event.
     /// </summary>
@@ -520,6 +541,55 @@ public abstract class NumericUpDownBase<T> : NumericUpDown where T : struct, ICo
     {
         add => AddHandler(ValueChangedEvent, value);
         remove => RemoveHandler(ValueChangedEvent, value);
+    }
+
+    #endregion
+
+    #region ReadCommand
+
+    public static readonly StyledProperty<ICommand?> ReadCommandProperty = AvaloniaProperty.Register<NumericUpDownBase<T>, ICommand?>(
+        nameof(ReadCommand));
+
+    public ICommand? ReadCommand
+    {
+        get => GetValue(ReadCommandProperty);
+        set => SetValue(ReadCommandProperty, value);
+    }
+
+    public static readonly StyledProperty<object?> ReadCommandParameterProperty =
+        AvaloniaProperty.Register<NumericUpDownBase<T>, object?>(nameof(ReadCommandParameter));
+
+    public object? ReadCommandParameter
+    {
+        get => this.GetValue(ReadCommandParameterProperty);
+        set => this.SetValue(ReadCommandParameterProperty, value);
+    }
+
+    /// <summary>
+    /// Defines the <see cref="ReadRequested"/> event.
+    /// </summary>
+    public static readonly RoutedEvent<RoutedEventArgs> ReadRequestedEvent =
+        RoutedEvent.Register<NumericUpDown, RoutedEventArgs>(nameof(ReadRequested), RoutingStrategies.Bubble);
+
+    /// <summary>
+    /// Raised when the Read required, like Read Button Click.
+    /// <br/>
+    /// [!!!] If you update the <see cref="Value"/> int the <see cref="ReadRequested"/>, <see cref="ValueChanged"/> Will not Raise
+    /// </summary>
+    public event EventHandler<RoutedEventArgs>? ReadRequested
+    {
+        add => AddHandler(ReadRequestedEvent, value);
+        remove => RemoveHandler(ReadRequestedEvent, value);
+    }
+
+    #endregion
+
+    private void InvokeCommand(ICommand? command, object? cp)
+    {
+        if (command != null && command.CanExecute(cp))
+        {
+            command.Execute(cp);
+        }
     }
 
     static NumericUpDownBase()
@@ -548,6 +618,9 @@ public abstract class NumericUpDownBase<T> : NumericUpDown where T : struct, ICo
         {
             SyncTextAndValue(false, null, true);
             SetValidSpinDirection();
+
+            if (isReading) return;
+
             T? oldValue = args.GetOldValue<T?>();
             T? newValue = args.GetNewValue<T?>();
             var e = new ValueChangedEventArgs<T>(ValueChangedEvent, oldValue, newValue);
@@ -557,7 +630,13 @@ public abstract class NumericUpDownBase<T> : NumericUpDown where T : struct, ICo
 
     private void RaiseEventCommand(ValueChangedEventArgs<T> e)
     {
-        InvokeCommand(this.CommandParameter ?? e.NewValue);
+        InvokeCommand(this.Command, this.CommandParameter ?? e.NewValue);
+        RaiseEvent(e);
+    }
+
+    private void RaiseReadEventCommand(RoutedEventArgs e)
+    {
+        InvokeCommand(this.ReadCommand, this.ReadCommandParameter ?? Value);
         RaiseEvent(e);
     }
 
@@ -750,6 +829,22 @@ public abstract class NumericUpDownBase<T> : NumericUpDown where T : struct, ICo
 
         SetCurrentValue(ValueProperty, Clamp(value, Maximum, Minimum));
     }
+
+    protected bool isReading = false;
+    protected override void OnRead(object sender, RoutedEventArgs e)
+    {
+        isReading = true;
+        e = new RoutedEventArgs(ReadRequestedEvent, this);
+        RaiseReadEventCommand(e);
+        isReading = false;
+    }
+
+    protected override void OnWrite(object sender, RoutedEventArgs e)
+    {
+        var ve = new ValueChangedEventArgs<T>(ValueChangedEvent, Value, Value);
+        RaiseEventCommand(ve);
+    }
+
 
     protected abstract bool ParseText(string? text, out T number);
     protected abstract string? ValueToString(T? value);
