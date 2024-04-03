@@ -8,14 +8,15 @@ namespace VariableBox.Avalonia.Themes.Semi;
 /// <summary>
 /// Notice: Don't set Locale if your app is in InvariantGlobalization mode.
 /// </summary>
-public class SemiTheme: Styles
+public class SemiTheme : Styles
 {
-    private static readonly Lazy<Dictionary<CultureInfo, string>> _localeToResource = new Lazy<Dictionary<CultureInfo, string>>(
-        () => new Dictionary<CultureInfo, string>
-        {
-            { new CultureInfo("zh-CN"), "avares://Ursa.Themes.Semi/Locale/zh-CN.axaml" },
-            { new CultureInfo("en-US"), "avares://Ursa.Themes.Semi/Locale/en-US.axaml" },
-        });
+    private static readonly Lazy<Dictionary<CultureInfo, string>> _localeToResource =
+        new Lazy<Dictionary<CultureInfo, string>>
+        (() => new Dictionary<CultureInfo, string>
+            {
+                { new CultureInfo("zh-CN"), "avares://Ursa.Themes.Semi/Locale/zh-CN.axaml" },
+                { new CultureInfo("en-US"), "avares://Ursa.Themes.Semi/Locale/en-US.axaml" },
+            });
 
     private static readonly string _defaultResource = "avares://Ursa.Themes.Semi/Locale/zh-CN.axaml";
 
