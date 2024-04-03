@@ -4,6 +4,36 @@
     xmlns:v="VariableBox">
     <!--  Add Resources Here  -->
 
+    <ControlTheme x:Key="ButtonSpinnerRepeatButton" TargetType="RepeatButton">
+        <Setter Property="RepeatButton.Background" Value="{DynamicResource ButtonSpinnerRepeatButtonBackground}" />
+        <Setter Property="RepeatButton.Cursor" Value="Hand" />
+        <Setter Property="RepeatButton.Template">
+            <ControlTemplate>
+                <ContentPresenter
+                    x:Name="PART_ContentPresenter"
+                    Padding="{TemplateBinding Padding}"
+                    HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
+                    VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
+                    Background="{TemplateBinding Background}"
+                    BorderBrush="{TemplateBinding BorderBrush}"
+                    BorderThickness="{TemplateBinding BorderThickness}"
+                    Content="{TemplateBinding Content}"
+                    ContentTemplate="{TemplateBinding ContentTemplate}" />
+            </ControlTemplate>
+        </Setter>
+        <Style Selector="^:pointerover /template/ ContentPresenter#PART_ContentPresenter">
+            <Setter Property="Background" Value="{DynamicResource ButtonSpinnerRepeatButtonPointeroverBackground}" />
+        </Style>
+
+        <Style Selector="^:pressed /template/ ContentPresenter#PART_ContentPresenter">
+            <Setter Property="Background" Value="{DynamicResource ButtonSpinnerRepeatButtonPressedBackground}" />
+        </Style>
+
+        <Style Selector="^:disabled /template/ ContentPresenter#PART_ContentPresenter">
+            <Setter Property="Background" Value="{DynamicResource ButtonSpinnerRepeatButtonDisabledBackground}" />
+        </Style>
+    </ControlTheme>
+
     <ControlTheme x:Key="InputClearButton" TargetType="Button">
         <Setter Property="Button.Foreground" Value="{DynamicResource TextBoxButtonDefaultForeground}" />
         <Setter Property="Button.Cursor" Value="Hand" />
@@ -72,26 +102,45 @@
                                     Theme="{StaticResource InputClearButton}" />
                             </Panel>
                         </ButtonSpinner>
+
                         <RepeatButton
                             Name="PART_RepeatRead"
                             Grid.Column="1"
                             Width="16"
                             MinWidth="0"
-                            Margin="0"
+                            Margin="1,1,1,1"
                             Padding="0"
                             HorizontalContentAlignment="Center"
-                            Content="❰"
-                            IsVisible="{TemplateBinding IsShowReadButton}" />
+                            BorderBrush="{DynamicResource ButtonSpinnerRepeatButtonBorderBrush}"
+                            BorderThickness="{DynamicResource ButtonSpinnerButtonGroupBorderThickness}"
+                            CornerRadius="{DynamicResource ButtonSpinnerButtonGroupCornerRadius}"
+                            IsVisible="{TemplateBinding IsShowReadButton}"
+                            Theme="{StaticResource ButtonSpinnerRepeatButton}">
+                            <PathIcon
+                                Width="8"
+                                Height="8"
+                                Data="{DynamicResource ButtonSpinnerReadButtonGlyph}"
+                                Foreground="{DynamicResource ButtonSpinnerRepeatButtonForeground}" />
+                        </RepeatButton>
                         <RepeatButton
                             Name="PART_RepeatWrite"
                             Grid.Column="2"
                             Width="16"
                             MinWidth="0"
-                            Margin="0"
+                            Margin="0,1,1,1"
                             Padding="0"
                             HorizontalContentAlignment="Center"
-                            Content="❱"
-                            IsVisible="{TemplateBinding IsShowWriteButton}" />
+                            BorderBrush="{DynamicResource ButtonSpinnerRepeatButtonBorderBrush}"
+                            BorderThickness="{DynamicResource ButtonSpinnerButtonGroupBorderThickness}"
+                            CornerRadius="{DynamicResource ButtonSpinnerButtonGroupCornerRadius}"
+                            IsVisible="{TemplateBinding IsShowWriteButton}"
+                            Theme="{StaticResource ButtonSpinnerRepeatButton}">
+                            <PathIcon
+                                Width="8"
+                                Height="8"
+                                Data="{DynamicResource ButtonSpinnerWriteButtonGlyph}"
+                                Foreground="{DynamicResource ButtonSpinnerRepeatButtonForeground}" />
+                        </RepeatButton>
                     </Grid>
                 </DataValidationErrors>
             </ControlTemplate>
