@@ -4,7 +4,7 @@ namespace Ursa.Demo.ViewModels;
 
 public class MainViewViewModel : ViewModelBase
 {
-    public MenuViewModel Menus { get; set; } = new MenuViewModel();
+    // public MenuViewModel Menus { get; set; } = new MenuViewModel();
 
     private object? _content;
 
@@ -24,41 +24,7 @@ public class MainViewViewModel : ViewModelBase
     {
         Content = s switch
         {
-            MenuKeys.MenuKeyIntroduction => new IntroductionDemoViewModel(),
-            MenuKeys.MenuKeyBadge => new BadgeDemoViewModel(),
-            MenuKeys.MenuKeyBanner => new BannerDemoViewModel(),
-            MenuKeys.MenuKeyButtonGroup => new ButtonGroupDemoViewModel(),
-            MenuKeys.MenuKeyBreadcrumb => new BreadcrumbDemoViewModel(),
-            MenuKeys.MenuKeyClassInput => new ClassInputDemoViewModel(),
-            MenuKeys.MenuKeyDialog => new DialogDemoViewModel(),
-            MenuKeys.MenuKeyDivider => new DividerDemoViewModel(),
-            MenuKeys.MenuKeyDisableContainer => new DisableContainerDemoViewModel(),
-            MenuKeys.MenuKeyDrawer => new DrawerDemoViewModel(),
-            MenuKeys.MenuKeyDualBadge => new DualBadgeDemoViewModel(),
-            MenuKeys.MenuKeyEnumSelector => new EnumSelectorDemoViewModel(),
-            MenuKeys.MenuKeyForm => new FormDemoViewModel(),
-            MenuKeys.MenuKeyImageViewer => new ImageViewerDemoViewModel(),
-            MenuKeys.MenuKeyIconButton => new IconButtonDemoViewModel(),
-            MenuKeys.MenuKeyIpBox => new IPv4BoxDemoViewModel(),
-            MenuKeys.MenuKeyKeyGestureInput => new KeyGestureInputDemoViewModel(),
-            MenuKeys.MenuKeyLoading => new LoadingDemoViewModel(),
-            MenuKeys.MenuKeyMessageBox => new MessageBoxDemoViewModel(),
-            MenuKeys.MenuKeyMultiComboBox => new MultiComboBoxDemoViewModel(),
-            MenuKeys.MenuKeyNavMenu => new NavMenuDemoViewModel(),
-            MenuKeys.MenuKeyNumberDisplayer => new NumberDisplayerDemoViewModel(),
-            MenuKeys.MenuKeyNumericUpDown => new NumericUpDownDemoViewModel(),
-            MenuKeys.MenuKeyNumPad => new NumPadDemoViewModel(),
-            MenuKeys.MenuKeyPagination => new PaginationDemoViewModel(),
-            MenuKeys.MenuKeyRangeSlider => new RangeSliderDemoViewModel(),
-            MenuKeys.MenuKeyScrollToButton => new ScrollToButtonDemoViewModel(),
-            MenuKeys.MenuKeySelectionList => new SelectionListDemoViewModel(),
-            MenuKeys.MenuKeySkeleton => new SkeletonDemoViewModel(),
-            MenuKeys.MenuKeyTagInput => new TagInputDemoViewModel(),
-            MenuKeys.MenuKeyTimeline => new TimelineDemoViewModel(),
-            MenuKeys.MenuKeyTwoTonePathIcon => new TwoTonePathIconDemoViewModel(),
-            MenuKeys.MenuKeyThemeToggler => new ThemeTogglerDemoViewModel(),
-            MenuKeys.MenuKeyToolBar => new ToolBarDemoViewModel(),
-            MenuKeys.MenuKeyVerificationCode => new VerificationCodeDemoViewModel(),
+            // MenuKeys.MenuKeyNumericUpDown => new NumericUpDownDemoViewModel(),
         };
     }
 }

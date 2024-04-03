@@ -4,9 +4,5 @@
             <!--  Add Controls for Previewer Here  -->
         </Border>
     </Design.PreviewWith>
-    <StyleInclude Source="Breadcrumb.axaml" />
-    <StyleInclude Source="ButtonGroup.axaml" />
-    <StyleInclude Source="Skeleton.axaml" />
-    <StyleInclude Source="ToolBar.axaml"/>
     <!--  Add Styles Here  -->
 </Styles>

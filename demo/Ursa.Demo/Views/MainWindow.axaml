@@ -4,7 +4,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:views="clr-namespace:Ursa.Demo.Views"
+    xmlns:Pages="clr-namespace:Ursa.Demo.Pages"
     xmlns:viewModels="clr-namespace:Ursa.Demo.ViewModels"
     Title="Ursa.Demo"
     d:DesignHeight="450"
@@ -13,5 +13,5 @@
     x:DataType="viewModels:MainWindowViewModel"
     Icon="/Assets/Ursa.ico"
     mc:Ignorable="d">
-    <views:MainView />
+    <Pages:NumericUpDownDemo />
 </Window>

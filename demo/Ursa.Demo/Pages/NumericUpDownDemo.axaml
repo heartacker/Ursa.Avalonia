@@ -53,7 +53,6 @@
                     Step="{Binding Step}"
                     Watermark="{Binding Watermark}"
                     Value="{Binding Value}" />
-                <u:Divider Content="ValueChange(Write)" />
                 <TextBox
                     Width="NaN"
                     HorizontalAlignment="Center"
@@ -64,7 +63,6 @@
                     HorizontalAlignment="Center"
                     IsReadOnly="true"
                     Text="{Binding ValueChangedUpdateText}" />
-                <u:Divider Content="Demo" />
             </StackPanel>
 
         </Expander>
@@ -73,7 +71,6 @@
             Grid.Column="0"
             HorizontalAlignment="Left">
             <StackPanel Grid.Row="1">
-                <u:Divider Content="{Binding #input.Value, StringFormat='Int = {0}'}" />
                 <u:NumericIntUpDown
                     Name="input"
                     Classes="ClearButton"
@@ -81,19 +78,16 @@
                     Step="1"
                     Watermark="Input Value"
                     Value="2" />
-                <u:Divider Content="{Binding #inputDouble.Value, StringFormat='Double = {0}'}" />
                 <u:NumericDoubleUpDown
                     Name="inputDouble"
                     EmptyInputValue="1"
                     Step="0.5"
                     Value="3.1" />
-                <u:Divider Content="{Binding #inputByte.Value, StringFormat='Byte = {0}'}" />
                 <u:NumericByteUpDown
                     Name="inputByte"
                     EmptyInputValue="1"
                     Step="1"
                     Value="3" />
-                <u:Divider Content="{Binding #Drag_Int.Value, StringFormat='Drag Int = {0}'}" />
                 <u:NumericIntUpDown
                     Name="Drag_Int"
                     AllowDrag="True"
@@ -104,7 +98,6 @@
 
                 <!--  hex demo  -->
 
-                <u:Divider Content="{Binding #uint_HexNumber.Value, StringFormat='Don‘t Use = {0}, hex={0:X}'}" />
                 <!--  =================this is error usage  -->
                 <u:NumericUIntUpDown
                     Name="uint_HexNumber"
@@ -117,7 +110,6 @@
                     Value="2" />
 
                 <!--  =================we should use AllowHexSpecifier  -->
-                <u:Divider Content="{Binding #uint_AllowHexSpecifier.Value, StringFormat='uint = {0}, hex={0:X}'}" />
                 <u:NumericUIntUpDown
                     Name="uint_AllowHexSpecifier"
                     HorizontalContentAlignment="Right"
@@ -130,7 +122,6 @@
                     Watermark="AllowHexSpecifier"
                     Value="2" />
 
-                <u:Divider Content="{Binding #Consolas_uint.Value, StringFormat='Font=Consolas {0}, hex={0:X}'}" />
                 <u:NumericUIntUpDown
                     Name="Consolas_uint"
                     HorizontalContentAlignment="Right"

@@ -481,7 +481,7 @@ public abstract class NumericUpDownBase<T> : NumericUpDown where T : struct, ICo
     }
 
 
-    public static readonly StyledProperty<ICommand?> CommandProperty = AvaloniaProperty.Register<Pagination, ICommand?>(
+    public static readonly StyledProperty<ICommand?> CommandProperty = AvaloniaProperty.Register<NumericUpDownBase<T>, ICommand?>(
         nameof(Command));
 
     public ICommand? Command
@@ -491,7 +491,7 @@ public abstract class NumericUpDownBase<T> : NumericUpDown where T : struct, ICo
     }
 
     public static readonly StyledProperty<object?> CommandParameterProperty =
-        AvaloniaProperty.Register<Pagination, object?>(nameof(CommandParameter));
+        AvaloniaProperty.Register<NumericUpDownBase<T>, object?>(nameof(CommandParameter));
 
     public object? CommandParameter
     {
