@@ -46,6 +46,7 @@
                                 Height="{TemplateBinding Height}"
                                 MinHeight="{DynamicResource NumericUpDownWrapperDefaultHeight}"
                                 HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                VerticalContentAlignment="Center"
                                 AcceptsReturn="False"
                                 CornerRadius="{TemplateBinding CornerRadius}"
                                 DataValidationErrors.Errors="{ReflectionBinding $parent[NumericUpDown].(DataValidationErrors.Errors)}"
@@ -60,7 +61,7 @@
                                 HorizontalAlignment="Stretch"
                                 VerticalAlignment="Stretch"
                                 Background="Transparent"
-                                Cursor="SizeAll"/>
+                                Cursor="SizeAll" />
                             <Button
                                 Name="PART_ClearButton"
                                 Margin="0,0,8,0"
