@@ -1,30 +1,31 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ursa", "src\Ursa\Ursa.csproj", "{14E5B6D1-E3ED-41D7-9664-37ABE3B22558}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ursa.Demo", "demo\Ursa.Demo\Ursa.Demo.csproj", "{407A91FD-A88B-459B-8DCE-8C6AA98279FE}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ursa.Themes.Semi", "src\Ursa.Themes.Semi\Ursa.Themes.Semi.csproj", "{53B5F277-3AEB-4661-ACAE-15CFFF2ED800}"
+# Visual Studio Version 17
+VisualStudioVersion = 17.9.34723.18
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ursa.Demo", "demo\Ursa.Demo\Ursa.Demo.csproj", "{407A91FD-A88B-459B-8DCE-8C6AA98279FE}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Demo", "Demo", "{A41BAF0D-DA61-4A63-889A-084BAD36FD66}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ursa.Demo.Android", "demo\Ursa.Demo.Android\Ursa.Demo.Android.csproj", "{3FC76CD9-CE5D-4804-A8D6-4E292EB296AA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ursa.Demo.Android", "demo\Ursa.Demo.Android\Ursa.Demo.Android.csproj", "{3FC76CD9-CE5D-4804-A8D6-4E292EB296AA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ursa.Demo.Desktop", "demo\Ursa.Demo.Desktop\Ursa.Demo.Desktop.csproj", "{B6BAB821-A9FE-44F3-B9CD-06E27FDB63F6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ursa.Demo.Desktop", "demo\Ursa.Demo.Desktop\Ursa.Demo.Desktop.csproj", "{B6BAB821-A9FE-44F3-B9CD-06E27FDB63F6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ursa.Demo.iOS", "demo\Ursa.Demo.iOS\Ursa.Demo.iOS.csproj", "{94C2BBD9-8B57-4AE9-AAFD-7D4335B15A8E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ursa.Demo.iOS", "demo\Ursa.Demo.iOS\Ursa.Demo.iOS.csproj", "{94C2BBD9-8B57-4AE9-AAFD-7D4335B15A8E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ursa.Demo.Browser", "demo\Ursa.Demo.Browser\Ursa.Demo.Browser.csproj", "{D1942476-8473-4608-BB9F-5AC01083BBDA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ursa.Demo.Browser", "demo\Ursa.Demo.Browser\Ursa.Demo.Browser.csproj", "{D1942476-8473-4608-BB9F-5AC01083BBDA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ursa.PrismExtension", "src\Ursa.PrismExtension\Ursa.PrismExtension.csproj", "{2E934F60-F5DF-4856-B05A-B949C7F9D948}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ursa.PrismDialogDemo", "demo\Ursa.PrismDialogDemo\Ursa.PrismDialogDemo.csproj", "{F99B3D07-4560-4B05-892C-0FF2757FEF2E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ursa.PrismDialogDemo", "demo\Ursa.PrismDialogDemo\Ursa.PrismDialogDemo.csproj", "{F99B3D07-4560-4B05-892C-0FF2757FEF2E}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Files", "Solution Files", "{9D34CC2C-9BFA-4138-BA5A-CD3744F9B589}"
 	ProjectSection(SolutionItems) = preProject
-		src\Package.props = src\Package.props
 		demo\Directory.Build.props = demo\Directory.Build.props
+		src\Package.props = src\Package.props
 	EndProjectSection
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VariableBox", "src\VariableBox\VariableBox.csproj", "{54BBCD4E-2802-4AE5-8788-FDBF97A4141C}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VariableBox.Themes.Semi", "src\VariableBox.Themes.Semi\VariableBox.Themes.Semi.csproj", "{3495F7CD-8D0F-43CD-BF61-FA496F52531C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -32,18 +33,10 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{14E5B6D1-E3ED-41D7-9664-37ABE3B22558}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{14E5B6D1-E3ED-41D7-9664-37ABE3B22558}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{14E5B6D1-E3ED-41D7-9664-37ABE3B22558}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{14E5B6D1-E3ED-41D7-9664-37ABE3B22558}.Release|Any CPU.Build.0 = Release|Any CPU
 		{407A91FD-A88B-459B-8DCE-8C6AA98279FE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{407A91FD-A88B-459B-8DCE-8C6AA98279FE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{407A91FD-A88B-459B-8DCE-8C6AA98279FE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{407A91FD-A88B-459B-8DCE-8C6AA98279FE}.Release|Any CPU.Build.0 = Release|Any CPU
-		{53B5F277-3AEB-4661-ACAE-15CFFF2ED800}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{53B5F277-3AEB-4661-ACAE-15CFFF2ED800}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{53B5F277-3AEB-4661-ACAE-15CFFF2ED800}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{53B5F277-3AEB-4661-ACAE-15CFFF2ED800}.Release|Any CPU.Build.0 = Release|Any CPU
 		{3FC76CD9-CE5D-4804-A8D6-4E292EB296AA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{3FC76CD9-CE5D-4804-A8D6-4E292EB296AA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3FC76CD9-CE5D-4804-A8D6-4E292EB296AA}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -60,14 +53,21 @@ Global
 		{D1942476-8473-4608-BB9F-5AC01083BBDA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D1942476-8473-4608-BB9F-5AC01083BBDA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D1942476-8473-4608-BB9F-5AC01083BBDA}.Release|Any CPU.Build.0 = Release|Any CPU
-		{2E934F60-F5DF-4856-B05A-B949C7F9D948}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{2E934F60-F5DF-4856-B05A-B949C7F9D948}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{2E934F60-F5DF-4856-B05A-B949C7F9D948}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{2E934F60-F5DF-4856-B05A-B949C7F9D948}.Release|Any CPU.Build.0 = Release|Any CPU
 		{F99B3D07-4560-4B05-892C-0FF2757FEF2E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{F99B3D07-4560-4B05-892C-0FF2757FEF2E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F99B3D07-4560-4B05-892C-0FF2757FEF2E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F99B3D07-4560-4B05-892C-0FF2757FEF2E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{54BBCD4E-2802-4AE5-8788-FDBF97A4141C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{54BBCD4E-2802-4AE5-8788-FDBF97A4141C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{54BBCD4E-2802-4AE5-8788-FDBF97A4141C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{54BBCD4E-2802-4AE5-8788-FDBF97A4141C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3495F7CD-8D0F-43CD-BF61-FA496F52531C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3495F7CD-8D0F-43CD-BF61-FA496F52531C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3495F7CD-8D0F-43CD-BF61-FA496F52531C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3495F7CD-8D0F-43CD-BF61-FA496F52531C}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{407A91FD-A88B-459B-8DCE-8C6AA98279FE} = {A41BAF0D-DA61-4A63-889A-084BAD36FD66}
