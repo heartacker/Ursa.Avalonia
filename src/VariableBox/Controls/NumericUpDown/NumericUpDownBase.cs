@@ -162,6 +162,16 @@ public abstract class NumericUpDown : TemplatedControl/*, IClearControl*/
         set => SetValue(IsShowWriteButtonProperty, value);
     }
 
+    public static readonly StyledProperty<bool> IsReadWriteButtonShowProperty =
+        AvaloniaProperty.Register<NumericUpDown, bool>(nameof(IsReadWriteButtonShow), false);
+
+    public bool IsReadWriteButtonShow
+    {
+        get => GetValue(IsReadWriteButtonShowProperty);
+        protected set => SetValue(IsReadWriteButtonShowProperty, value);
+    }
+
+
     public event EventHandler<SpinEventArgs>? Spinned;
 
     static NumericUpDown()
@@ -171,6 +181,13 @@ public abstract class NumericUpDown : TemplatedControl/*, IClearControl*/
         IsReadOnlyProperty.Changed.AddClassHandler<NumericUpDown, bool>((o, args) => o.OnIsReadOnlyChanged(args));
         TextConverterProperty.Changed.AddClassHandler<NumericUpDown>((o, e) => o.OnFormatChange(e));
         AllowDragProperty.Changed.AddClassHandler<NumericUpDown, bool>((o, e) => o.OnAllowDragChange(e));
+        IsShowReadButtonProperty.Changed.AddClassHandler<NumericUpDown, bool>((o, e) => o.OnReadWriteShowChange(e));
+        IsShowWriteButtonProperty.Changed.AddClassHandler<NumericUpDown, bool>((o, e) => o.OnReadWriteShowChange(e));
+    }
+
+    private void OnReadWriteShowChange(AvaloniaPropertyChangedEventArgs<bool> e)
+    {
+        IsReadWriteButtonShow = IsShowReadButton || IsShowWriteButton;
     }
 
     private void OnAllowDragChange(AvaloniaPropertyChangedEventArgs<bool> args)

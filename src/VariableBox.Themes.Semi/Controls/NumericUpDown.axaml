@@ -2,7 +2,11 @@
     xmlns="https://github.com/avaloniaui"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:v="VariableBox">
+
     <!--  Add Resources Here  -->
+    <StreamGeometry x:Key="ButtonSpinnerReadButtonGlyph">M20 5 10 30 20 55 30 55 20 30 30 5Z</StreamGeometry>
+    <StreamGeometry x:Key="ButtonSpinnerWriteButtonGlyph">M20 5 30 30 20 55 30 55 40 30 30 5Z</StreamGeometry>
+
 
     <ControlTheme x:Key="ButtonSpinnerRepeatButton" TargetType="RepeatButton">
         <Setter Property="RepeatButton.Background" Value="{DynamicResource ButtonSpinnerRepeatButtonBackground}" />
@@ -60,7 +64,7 @@
         <Setter Property="Template">
             <ControlTemplate TargetType="v:NumericUpDown">
                 <DataValidationErrors>
-                    <Grid ColumnDefinitions="*,auto,auto">
+                    <Grid ColumnDefinitions="*,auto">
                         <ButtonSpinner
                             Name="PART_Spinner"
                             MinWidth="0"
@@ -103,44 +107,58 @@
                             </Panel>
                         </ButtonSpinner>
 
-                        <RepeatButton
-                            Name="PART_RepeatRead"
+                        <Border
+                            Name="ButtonGroup2"
                             Grid.Column="1"
-                            Width="16"
-                            MinWidth="0"
-                            Margin="1,1,1,1"
-                            Padding="0"
-                            HorizontalContentAlignment="Center"
+                            MinWidth="16"
+                            Margin="1,0,0,0"
                             BorderBrush="{DynamicResource ButtonSpinnerRepeatButtonBorderBrush}"
                             BorderThickness="{DynamicResource ButtonSpinnerButtonGroupBorderThickness}"
                             CornerRadius="{DynamicResource ButtonSpinnerButtonGroupCornerRadius}"
-                            IsVisible="{TemplateBinding IsShowReadButton}"
-                            Theme="{StaticResource ButtonSpinnerRepeatButton}">
-                            <PathIcon
-                                Width="8"
-                                Height="8"
-                                Data="{DynamicResource ButtonSpinnerReadButtonGlyph}"
-                                Foreground="{DynamicResource ButtonSpinnerRepeatButtonForeground}" />
-                        </RepeatButton>
-                        <RepeatButton
-                            Name="PART_RepeatWrite"
-                            Grid.Column="2"
-                            Width="16"
-                            MinWidth="0"
-                            Margin="0,1,1,1"
-                            Padding="0"
-                            HorizontalContentAlignment="Center"
-                            BorderBrush="{DynamicResource ButtonSpinnerRepeatButtonBorderBrush}"
-                            BorderThickness="{DynamicResource ButtonSpinnerButtonGroupBorderThickness}"
-                            CornerRadius="{DynamicResource ButtonSpinnerButtonGroupCornerRadius}"
-                            IsVisible="{TemplateBinding IsShowWriteButton}"
-                            Theme="{StaticResource ButtonSpinnerRepeatButton}">
-                            <PathIcon
-                                Width="8"
-                                Height="8"
-                                Data="{DynamicResource ButtonSpinnerWriteButtonGlyph}"
-                                Foreground="{DynamicResource ButtonSpinnerRepeatButtonForeground}" />
-                        </RepeatButton>
+                            IsVisible="{TemplateBinding IsReadWriteButtonShow}"
+                            UseLayoutRounding="False">
+                            <Grid ColumnDefinitions="auto,auto">
+                                <RepeatButton
+                                    Name="PART_RepeatRead"
+                                    Grid.Column="0"
+                                    Width="16"
+                                    MinWidth="0"
+                                    Margin="0,0,0,0"
+                                    Padding="0"
+                                    HorizontalContentAlignment="Center"
+                                    BorderBrush="{DynamicResource ButtonSpinnerRepeatButtonBorderBrush}"
+                                    BorderThickness="{DynamicResource ButtonSpinnerButtonGroupBorderThickness}"
+                                    CornerRadius="{DynamicResource ButtonSpinnerButtonGroupCornerRadius}"
+                                    IsVisible="{TemplateBinding IsShowReadButton}"
+                                    Theme="{StaticResource ButtonSpinnerRepeatButton}">
+                                    <PathIcon
+                                        Width="8"
+                                        Height="8"
+                                        Data="{DynamicResource ButtonSpinnerReadButtonGlyph}"
+                                        Foreground="{DynamicResource ButtonSpinnerRepeatButtonForeground}" />
+                                </RepeatButton>
+
+                                <RepeatButton
+                                    Name="PART_RepeatWrite"
+                                    Grid.Column="1"
+                                    Width="16"
+                                    MinWidth="0"
+                                    Margin="0,0,0,0"
+                                    Padding="0"
+                                    HorizontalContentAlignment="Center"
+                                    BorderBrush="{DynamicResource ButtonSpinnerRepeatButtonBorderBrush}"
+                                    BorderThickness="{DynamicResource ButtonSpinnerButtonGroupBorderThickness}"
+                                    CornerRadius="{DynamicResource ButtonSpinnerButtonGroupCornerRadius}"
+                                    IsVisible="{TemplateBinding IsShowWriteButton}"
+                                    Theme="{StaticResource ButtonSpinnerRepeatButton}">
+                                    <PathIcon
+                                        Width="8"
+                                        Height="8"
+                                        Data="{DynamicResource ButtonSpinnerWriteButtonGlyph}"
+                                        Foreground="{DynamicResource ButtonSpinnerRepeatButtonForeground}" />
+                                </RepeatButton>
+                            </Grid>
+                        </Border>
                     </Grid>
                 </DataValidationErrors>
             </ControlTemplate>
