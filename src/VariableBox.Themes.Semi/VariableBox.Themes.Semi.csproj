@@ -9,7 +9,7 @@
         <LangVersion>latest</LangVersion>
         <Version>0.0.1-beta20240404</Version>
         <Authors>heartacker</Authors>
-        <PackageId>VariableBox.Themes.Semi</PackageId>
+        <PackageId>VariableBox.Avalonia.Themes.Semi</PackageId>
         <PackageIcon></PackageIcon>
         <PackageLicenseExpression>MIT</PackageLicenseExpression>
         <PackageProjectUrl>https://github.com/heartacker/VariableBox.Avalonia</PackageProjectUrl>

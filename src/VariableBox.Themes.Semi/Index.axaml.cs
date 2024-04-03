@@ -3,7 +3,7 @@ using Avalonia.Controls;
 using Avalonia.Markup.Xaml;
 using Avalonia.Styling;
 
-namespace VariableBox.Themes.Semi;
+namespace VariableBox.Avalonia.Themes.Semi;
 
 /// <summary>
 /// Notice: Don't set Locale if your app is in InvariantGlobalization mode.

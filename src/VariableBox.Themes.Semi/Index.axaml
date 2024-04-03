@@ -1,5 +1,5 @@
 ﻿<Styles
-    x:Class="VariableBox.Themes.Semi.SemiTheme"
+    x:Class="VariableBox.Avalonia.Themes.Semi.SemiTheme"
     xmlns="https://github.com/avaloniaui"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     <Styles.Resources>
