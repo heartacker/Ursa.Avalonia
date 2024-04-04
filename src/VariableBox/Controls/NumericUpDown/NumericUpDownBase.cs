@@ -183,6 +183,24 @@ public abstract class NumericUpDown : TemplatedControl/*, IClearControl*/
         set => SetValue(IsUpdateValueWhenLostFocusProperty, value);
     }
 
+    public static readonly StyledProperty<bool> IsEditingValidProperty =
+        AvaloniaProperty.Register<NumericUpDown, bool>(nameof(IsEditingValid), false);
+
+    public bool IsEditingValid
+    {
+        get => GetValue(IsEditingValidProperty);
+        protected set => SetValue(IsEditingValidProperty, value);
+    }
+
+    public static readonly StyledProperty<bool> IsEditingProperty =
+    AvaloniaProperty.Register<NumericUpDown, bool>(nameof(IsEditing), false);
+
+    public bool IsEditing
+    {
+        get => GetValue(IsEditingProperty);
+        protected set => SetValue(IsEditingProperty, value);
+    }
+
     public event EventHandler<SpinEventArgs>? Spinned;
 
     static NumericUpDown()
@@ -238,19 +256,28 @@ public abstract class NumericUpDown : TemplatedControl/*, IClearControl*/
     protected override void OnApplyTemplate(TemplateAppliedEventArgs e)
     {
         base.OnApplyTemplate(e);
+
         Spinner.SpinEvent.RemoveHandler(OnSpin, _spinner);
         PointerPressedEvent.RemoveHandler(OnDragPanelPointerPressed, _dragPanel);
         PointerMovedEvent.RemoveHandler(OnDragPanelPointerMoved, _dragPanel);
         PointerReleasedEvent.RemoveHandler(OnDragPanelPointerReleased, _dragPanel);
+
         _spinner = e.NameScope.Find<ButtonSpinner>(PART_Spinner);
+        Spinner.SpinEvent.AddHandler(OnSpin, _spinner);
+
         _textBox = e.NameScope.Find<TextBox>(PART_TextBox);
+        TextBox.IsReadOnlyProperty.SetValue(IsReadOnly, _textBox);
+        if (_textBox != null)
+        {
+            _textBox.TextChanged += OnTextBoxTextChanged;
+        }
+
         _dragPanel = e.NameScope.Find<Panel>(PART_DragPanel);
         IsVisibleProperty.SetValue(AllowDrag, _dragPanel);
-        TextBox.IsReadOnlyProperty.SetValue(IsReadOnly, _textBox);
-        Spinner.SpinEvent.AddHandler(OnSpin, _spinner);
         PointerPressedEvent.AddHandler(OnDragPanelPointerPressed, _dragPanel);
         PointerMovedEvent.AddHandler(OnDragPanelPointerMoved, _dragPanel);
         PointerReleasedEvent.AddHandler(OnDragPanelPointerReleased, _dragPanel);
+
         OnApplyTemplateReadWrite(e);
     }
 
@@ -270,6 +297,18 @@ public abstract class NumericUpDown : TemplatedControl/*, IClearControl*/
     protected abstract void OnWrite(object sender, RoutedEventArgs e);
 
     protected abstract void OnRead(object sender, RoutedEventArgs e);
+
+    protected abstract void CheckContextIsChangedAndValid(string? text, ref bool isediting, ref bool valid);
+
+    bool ed = false;
+    bool edv = false;
+
+    private void OnTextBoxTextChanged(object? sender, TextChangedEventArgs e)
+    {
+        CheckContextIsChangedAndValid((sender as TextBox).Text, ref ed, ref edv);
+        IsEditing = ed;
+        IsEditingValid = edv;
+    }
 
     protected override void OnLostFocus(RoutedEventArgs e)
     {
