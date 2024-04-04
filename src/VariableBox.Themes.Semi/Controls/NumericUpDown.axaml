@@ -104,6 +104,12 @@
                                     Focusable="False"
                                     IsVisible="False"
                                     Theme="{StaticResource InputClearButton}" />
+                                <Label
+                                    Name="PART_Id_IsEditing"
+                                    Margin="2,1,2,0"
+                                    Background="Transparent"
+                                    Content="*"
+                                    IsVisible="{TemplateBinding IsEditing}" />
                             </Panel>
                         </ButtonSpinner>
 
@@ -178,5 +184,13 @@
         <Style Selector="^[IsShowReadButton=false] /template/ RepeatButton#PART_RepeatWrite">
             <Setter Property="Margin" Value="0 0 0 0" />
         </Style>
+
+        <Style Selector="^[IsEditingValid=false] /template/ Label#PART_Id_IsEditing">
+            <Setter Property="Foreground" Value="Red" />
+        </Style>
+        <Style Selector="^[IsEditingValid=true] /template/ Label#PART_Id_IsEditing">
+            <Setter Property="Foreground" Value="Green" />
+        </Style>
+
     </ControlTheme>
 </ResourceDictionary>
