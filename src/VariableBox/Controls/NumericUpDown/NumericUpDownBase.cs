@@ -171,6 +171,17 @@ public abstract class NumericUpDown : TemplatedControl/*, IClearControl*/
         protected set => SetValue(IsReadWriteButtonShowProperty, value);
     }
 
+    public static readonly StyledProperty<bool> IsUpdateValueWhenLostFocusProperty =
+        AvaloniaProperty.Register<NumericUpDown, bool>(nameof(IsUpdateValueWhenLostFocus), false);
+
+    /// <summary>
+    /// If true, the value will be updated when the user loses focus.
+    /// </summary>
+    public bool IsUpdateValueWhenLostFocus
+    {
+        get => GetValue(IsUpdateValueWhenLostFocusProperty);
+        set => SetValue(IsUpdateValueWhenLostFocusProperty, value);
+    }
 
     public event EventHandler<SpinEventArgs>? Spinned;
 
@@ -262,7 +273,10 @@ public abstract class NumericUpDown : TemplatedControl/*, IClearControl*/
 
     protected override void OnLostFocus(RoutedEventArgs e)
     {
-        CommitInput(true);
+        if (IsUpdateValueWhenLostFocus)
+        {
+            CommitInput(true);
+        }
         base.OnLostFocus(e);
         if (AllowDrag && _dragPanel is not null)
         {
