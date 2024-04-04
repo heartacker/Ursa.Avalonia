@@ -453,6 +453,15 @@ public abstract class NumericUpDownBase<T> : NumericUpDown where T : struct, ICo
         return text;
     }
 
+    public static readonly StyledProperty<T?> LastEditingValidValueProperty = AvaloniaProperty.Register<NumericUpDownBase<T>, T?>(
+        nameof(LastEditingValidValue), defaultBindingMode: BindingMode.TwoWay);
+
+    public T? LastEditingValidValue
+    {
+        get => GetValue(LastEditingValidValueProperty);
+        set => SetValue(LastEditingValidValueProperty, value);
+    }
+
     public static readonly StyledProperty<T?> ValueProperty = AvaloniaProperty.Register<NumericUpDownBase<T>, T?>(
         nameof(Value), defaultBindingMode: BindingMode.TwoWay);
 
