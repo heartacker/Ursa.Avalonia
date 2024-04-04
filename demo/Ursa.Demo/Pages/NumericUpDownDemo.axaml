@@ -47,6 +47,7 @@
                     IsReadOnly="{Binding IsReadOnly}"
                     IsShowReadButton="{Binding IsShowReadButton}"
                     IsShowWriteButton="{Binding IsShowWriteButton}"
+                    IsUpdateValueWhenLostFocus="{Binding IsUpdateValueWhenLostFocus}"
                     Maximum="{Binding Maximum}"
                     Minimum="{Binding Minimum}"
                     ParsingNumberStyle="{Binding ParsingNumberStyle}"
