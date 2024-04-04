@@ -736,110 +736,6 @@ public abstract class NumericUpDownBase<T> : NumericUpDown where T : struct, ICo
         }
     }
 
-    private bool _isSyncingTextAndValue;
-
-    protected override bool SyncTextAndValue(bool fromTextToValue = false, string? text = null, bool forceTextUpdate = false)
-    {
-        if (_isSyncingTextAndValue) return true;
-        _isSyncingTextAndValue = true;
-        var parsedTextIsValid = true;
-        try
-        {
-            if (fromTextToValue)
-            {
-                try
-                {
-                    var newValue = ConvertTextToValue(text);
-                    if (EmptyInputValue is not null && newValue is null)
-                    {
-                        newValue = EmptyInputValue;
-                    }
-                    if (!Equals(newValue, Value))
-                    {
-                        if (Equals(Clamp(newValue, Maximum, Minimum), newValue))
-                        {
-                            SetCurrentValue(ValueProperty, newValue);
-                        }
-                        else
-                        {
-                            parsedTextIsValid = false;
-                        }
-                    }
-                }
-                catch
-                {
-                    parsedTextIsValid = false;
-                }
-            }
-
-            if (!_updateFromTextInput)
-            {
-                if (forceTextUpdate)
-                {
-                    var newText = ConvertValueToText(Value);
-                    if (_textBox != null && !Equals(_textBox.Text, newText))
-                    {
-                        _textBox.Text = newText;
-                        _textBox.CaretIndex = newText?.Length ?? 0;
-                    }
-                }
-            }
-
-            if (_updateFromTextInput && !parsedTextIsValid)
-            {
-                if (_spinner is not null)
-                {
-                    _spinner.ValidSpinDirection = ValidSpinDirections.None;
-                }
-            }
-            else
-            {
-                SetValidSpinDirection();
-            }
-        }
-        finally
-        {
-            _isSyncingTextAndValue = false;
-        }
-        return parsedTextIsValid;
-    }
-
-    protected virtual T? ConvertTextToValue(string? text)
-    {
-        T? result;
-        if (string.IsNullOrWhiteSpace(text)) return null;
-        if (TextConverter != null)
-        {
-            var valueFromText = TextConverter.Convert(text, typeof(T?), null, CultureInfo.CurrentCulture);
-            return (T?)valueFromText;
-        }
-        else
-        {
-            text = TrimString(text, ParsingNumberStyle);
-            if (!ParseText(text, out var outputValue))
-            {
-                throw new InvalidDataException("Input string was not in a correct format.");
-            }
-
-            result = outputValue;
-        }
-        return result;
-    }
-
-    protected virtual string? ConvertValueToText(T? value)
-    {
-        if (TextConverter is not null)
-        {
-            return TextConverter.ConvertBack(Value, typeof(int), null, CultureInfo.CurrentCulture)?.ToString();
-        }
-
-        if (FormatString.Contains("{0"))
-        {
-            return string.Format(NumberFormat, FormatString, value);
-        }
-
-        return ValueToString(Value);
-    }
 
     protected override void Increase()
     {
@@ -883,6 +779,140 @@ public abstract class NumericUpDownBase<T> : NumericUpDown where T : struct, ICo
     {
         var ve = new ValueChangedEventArgs<T>(ValueChangedEvent, Value, Value);
         RaiseEventCommand(ve);
+    }
+
+
+    private bool _isSyncingTextAndValue;
+
+    protected override bool SyncTextAndValue(bool fromTextToValue = false, string? text = null, bool forceTextUpdate = false)
+    {
+        if (_isSyncingTextAndValue) return true;
+        _isSyncingTextAndValue = true;
+        var parsedTextIsValid = true;
+        try
+        {
+            if (fromTextToValue)
+            {
+                var ischanging = true;
+                var newValue = PraseContentToValue(text, ref ischanging, ref parsedTextIsValid);
+                if (parsedTextIsValid)
+                {
+                    SetCurrentValue(ValueProperty, newValue);
+                }
+            }
+
+            if (!_updateFromTextInput)
+            {
+                if (forceTextUpdate)
+                {
+                    var newText = ConvertValueToText(Value);
+                    if (_textBox != null && !Equals(_textBox.Text, newText))
+                    {
+                        _textBox.Text = newText;
+                        _textBox.CaretIndex = newText?.Length ?? 0;
+                    }
+                }
+            }
+
+            if (_updateFromTextInput && !parsedTextIsValid)
+            {
+                if (_spinner is not null)
+                {
+                    _spinner.ValidSpinDirection = ValidSpinDirections.None;
+                }
+            }
+            else
+            {
+                SetValidSpinDirection();
+            }
+        }
+        finally
+        {
+            _isSyncingTextAndValue = false;
+        }
+        return parsedTextIsValid;
+    }
+
+    protected override void CheckContextIsChangedAndValid(string? text, ref bool isediting, ref bool valid)
+    {
+        var lv = PraseContentToValue(text, ref isediting, ref valid);
+        if (valid)
+        {
+            LastEditingValidValue = lv;
+        }
+    }
+
+    protected T? PraseContentToValue(string? text, ref bool haveChanged, ref bool parsedTextIsValid)
+    {
+        T? newValue = default(T);
+        haveChanged = true;
+        parsedTextIsValid = true;
+        try
+        {
+            newValue = ConvertTextToValue(text);
+            if (EmptyInputValue is not null && newValue is null)
+            {
+                newValue = EmptyInputValue;
+            }
+            if (!Equals(newValue, Value))
+            {
+                if (Equals(Clamp(newValue, Maximum, Minimum), newValue)) // check and same
+                {
+                    parsedTextIsValid = true;
+                }
+                else
+                {
+                    parsedTextIsValid = false;
+                }
+            }
+            else
+            {
+                haveChanged = false;
+            }
+        }
+        catch
+        {
+            parsedTextIsValid = false;
+        }
+
+        return newValue;
+    }
+
+    protected virtual T? ConvertTextToValue(string? text)
+    {
+        T? result;
+        if (string.IsNullOrWhiteSpace(text)) return null;
+        if (TextConverter != null)
+        {
+            var valueFromText = TextConverter.Convert(text, typeof(T?), null, CultureInfo.CurrentCulture);
+            return (T?)valueFromText;
+        }
+        else
+        {
+            text = TrimString(text, ParsingNumberStyle);
+            if (!ParseText(text, out var outputValue))
+            {
+                throw new InvalidDataException("Input string was not in a correct format.");
+            }
+
+            result = outputValue;
+        }
+        return result;
+    }
+
+    protected virtual string? ConvertValueToText(T? value)
+    {
+        if (TextConverter is not null)
+        {
+            return TextConverter.ConvertBack(Value, typeof(int), null, CultureInfo.CurrentCulture)?.ToString();
+        }
+
+        if (FormatString.Contains("{0"))
+        {
+            return string.Format(NumberFormat, FormatString, value);
+        }
+
+        return ValueToString(Value);
     }
 
 
