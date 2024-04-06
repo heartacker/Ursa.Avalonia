@@ -4,15 +4,15 @@ using Avalonia.Utilities;
 
 namespace VariableBox.Controls;
 
-public class NumericIntUpDown : NumericUpDownBase<int>
+public class VariableBoxInt : NumericUpDownBase<int>
 {
     protected override Type StyleKeyOverride { get; } = typeof(NumericUpDown);
 
-    static NumericIntUpDown()
+    static VariableBoxInt()
     {
-        MaximumProperty.OverrideDefaultValue<NumericIntUpDown>(int.MaxValue);
-        MinimumProperty.OverrideDefaultValue<NumericIntUpDown>(int.MinValue);
-        StepProperty.OverrideDefaultValue<NumericIntUpDown>(1);
+        MaximumProperty.OverrideDefaultValue<VariableBoxInt>(int.MaxValue);
+        MinimumProperty.OverrideDefaultValue<VariableBoxInt>(int.MinValue);
+        StepProperty.OverrideDefaultValue<VariableBoxInt>(1);
     }
 
     protected override bool ParseText(string? text, out int number) =>
@@ -38,15 +38,15 @@ public class NumericIntUpDown : NumericUpDownBase<int>
     }
 }
 
-public class NumericUIntUpDown : NumericUpDownBase<uint>
+public class VariableBoxUInt : NumericUpDownBase<uint>
 {
     protected override Type StyleKeyOverride { get; } = typeof(NumericUpDown);
 
-    static NumericUIntUpDown()
+    static VariableBoxUInt()
     {
-        MaximumProperty.OverrideDefaultValue<NumericUIntUpDown>(uint.MaxValue);
-        MinimumProperty.OverrideDefaultValue<NumericUIntUpDown>(uint.MinValue);
-        StepProperty.OverrideDefaultValue<NumericUIntUpDown>(1);
+        MaximumProperty.OverrideDefaultValue<VariableBoxUInt>(uint.MaxValue);
+        MinimumProperty.OverrideDefaultValue<VariableBoxUInt>(uint.MinValue);
+        StepProperty.OverrideDefaultValue<VariableBoxUInt>(1);
     }
 
     protected override bool ParseText(string? text, out uint number)
@@ -74,15 +74,15 @@ public class NumericUIntUpDown : NumericUpDownBase<uint>
     }
 }
 
-public class NumericDoubleUpDown : NumericUpDownBase<double>
+public class VariableBoxDouble : NumericUpDownBase<double>
 {
     protected override Type StyleKeyOverride { get; } = typeof(NumericUpDown);
 
-    static NumericDoubleUpDown()
+    static VariableBoxDouble()
     {
-        MaximumProperty.OverrideDefaultValue<NumericDoubleUpDown>(double.MaxValue);
-        MinimumProperty.OverrideDefaultValue<NumericDoubleUpDown>(double.MinValue);
-        StepProperty.OverrideDefaultValue<NumericDoubleUpDown>(1);
+        MaximumProperty.OverrideDefaultValue<VariableBoxDouble>(double.MaxValue);
+        MinimumProperty.OverrideDefaultValue<VariableBoxDouble>(double.MinValue);
+        StepProperty.OverrideDefaultValue<VariableBoxDouble>(1);
     }
 
     protected override bool ParseText(string? text, out double number) =>
@@ -97,15 +97,15 @@ public class NumericDoubleUpDown : NumericUpDownBase<double>
     protected override double? Minus(double? a, double? b) => a - b;
 }
 
-public class NumericByteUpDown : NumericUpDownBase<byte>
+public class VariableBoxByte : NumericUpDownBase<byte>
 {
     protected override Type StyleKeyOverride { get; } = typeof(NumericUpDown);
 
-    static NumericByteUpDown()
+    static VariableBoxByte()
     {
-        MaximumProperty.OverrideDefaultValue<NumericByteUpDown>(byte.MaxValue);
-        MinimumProperty.OverrideDefaultValue<NumericByteUpDown>(byte.MinValue);
-        StepProperty.OverrideDefaultValue<NumericByteUpDown>(1);
+        MaximumProperty.OverrideDefaultValue<VariableBoxByte>(byte.MaxValue);
+        MinimumProperty.OverrideDefaultValue<VariableBoxByte>(byte.MinValue);
+        StepProperty.OverrideDefaultValue<VariableBoxByte>(1);
     }
 
     protected override bool ParseText(string? text, out byte number) =>
@@ -128,15 +128,15 @@ public class NumericByteUpDown : NumericUpDownBase<byte>
     }
 }
 
-public class NumericSByteUpDown : NumericUpDownBase<sbyte>
+public class VariableBoxSByte : NumericUpDownBase<sbyte>
 {
     protected override Type StyleKeyOverride { get; } = typeof(NumericUpDown);
 
-    static NumericSByteUpDown()
+    static VariableBoxSByte()
     {
-        MaximumProperty.OverrideDefaultValue<NumericSByteUpDown>(sbyte.MaxValue);
-        MinimumProperty.OverrideDefaultValue<NumericSByteUpDown>(sbyte.MinValue);
-        StepProperty.OverrideDefaultValue<NumericSByteUpDown>(1);
+        MaximumProperty.OverrideDefaultValue<VariableBoxSByte>(sbyte.MaxValue);
+        MinimumProperty.OverrideDefaultValue<VariableBoxSByte>(sbyte.MinValue);
+        StepProperty.OverrideDefaultValue<VariableBoxSByte>(1);
     }
 
     protected override bool ParseText(string? text, out sbyte number) =>
@@ -159,15 +159,15 @@ public class NumericSByteUpDown : NumericUpDownBase<sbyte>
     }
 }
 
-public class NumericShortUpDown : NumericUpDownBase<short>
+public class VariableBoxShort : NumericUpDownBase<short>
 {
     protected override Type StyleKeyOverride { get; } = typeof(NumericUpDown);
 
-    static NumericShortUpDown()
+    static VariableBoxShort()
     {
-        MaximumProperty.OverrideDefaultValue<NumericShortUpDown>(short.MaxValue);
-        MinimumProperty.OverrideDefaultValue<NumericShortUpDown>(short.MinValue);
-        StepProperty.OverrideDefaultValue<NumericShortUpDown>(1);
+        MaximumProperty.OverrideDefaultValue<VariableBoxShort>(short.MaxValue);
+        MinimumProperty.OverrideDefaultValue<VariableBoxShort>(short.MinValue);
+        StepProperty.OverrideDefaultValue<VariableBoxShort>(1);
     }
 
     protected override bool ParseText(string? text, out short number) =>
@@ -190,15 +190,15 @@ public class NumericShortUpDown : NumericUpDownBase<short>
     }
 }
 
-public class NumericUShortUpDown : NumericUpDownBase<ushort>
+public class VariableBoxUShort : NumericUpDownBase<ushort>
 {
     protected override Type StyleKeyOverride { get; } = typeof(NumericUpDown);
 
-    static NumericUShortUpDown()
+    static VariableBoxUShort()
     {
-        MaximumProperty.OverrideDefaultValue<NumericUShortUpDown>(ushort.MaxValue);
-        MinimumProperty.OverrideDefaultValue<NumericUShortUpDown>(ushort.MinValue);
-        StepProperty.OverrideDefaultValue<NumericUShortUpDown>(1);
+        MaximumProperty.OverrideDefaultValue<VariableBoxUShort>(ushort.MaxValue);
+        MinimumProperty.OverrideDefaultValue<VariableBoxUShort>(ushort.MinValue);
+        StepProperty.OverrideDefaultValue<VariableBoxUShort>(1);
     }
 
     protected override bool ParseText(string? text, out ushort number) =>
@@ -221,15 +221,15 @@ public class NumericUShortUpDown : NumericUpDownBase<ushort>
     }
 }
 
-public class NumericLongUpDown : NumericUpDownBase<long>
+public class VariableBoxLong : NumericUpDownBase<long>
 {
     protected override Type StyleKeyOverride { get; } = typeof(NumericUpDown);
 
-    static NumericLongUpDown()
+    static VariableBoxLong()
     {
-        MaximumProperty.OverrideDefaultValue<NumericLongUpDown>(long.MaxValue);
-        MinimumProperty.OverrideDefaultValue<NumericLongUpDown>(long.MinValue);
-        StepProperty.OverrideDefaultValue<NumericLongUpDown>(1);
+        MaximumProperty.OverrideDefaultValue<VariableBoxLong>(long.MaxValue);
+        MinimumProperty.OverrideDefaultValue<VariableBoxLong>(long.MinValue);
+        StepProperty.OverrideDefaultValue<VariableBoxLong>(1);
     }
 
     protected override bool ParseText(string? text, out long number) =>
@@ -252,15 +252,15 @@ public class NumericLongUpDown : NumericUpDownBase<long>
     }
 }
 
-public class NumericULongUpDown : NumericUpDownBase<ulong>
+public class VariableBoxULong : NumericUpDownBase<ulong>
 {
     protected override Type StyleKeyOverride { get; } = typeof(NumericUpDown);
 
-    static NumericULongUpDown()
+    static VariableBoxULong()
     {
-        MaximumProperty.OverrideDefaultValue<NumericULongUpDown>(ulong.MaxValue);
-        MinimumProperty.OverrideDefaultValue<NumericULongUpDown>(ulong.MinValue);
-        StepProperty.OverrideDefaultValue<NumericULongUpDown>(1);
+        MaximumProperty.OverrideDefaultValue<VariableBoxULong>(ulong.MaxValue);
+        MinimumProperty.OverrideDefaultValue<VariableBoxULong>(ulong.MinValue);
+        StepProperty.OverrideDefaultValue<VariableBoxULong>(1);
     }
 
     protected override bool ParseText(string? text, out ulong number) =>
@@ -275,15 +275,15 @@ public class NumericULongUpDown : NumericUpDownBase<ulong>
     protected override ulong? Minus(ulong? a, ulong? b) => a - b;
 }
 
-public class NumericFloatUpDown : NumericUpDownBase<float>
+public class VariableBoxFloat : NumericUpDownBase<float>
 {
     protected override Type StyleKeyOverride { get; } = typeof(NumericUpDown);
 
-    static NumericFloatUpDown()
+    static VariableBoxFloat()
     {
-        MaximumProperty.OverrideDefaultValue<NumericFloatUpDown>(float.MaxValue);
-        MinimumProperty.OverrideDefaultValue<NumericFloatUpDown>(float.MinValue);
-        StepProperty.OverrideDefaultValue<NumericFloatUpDown>(1);
+        MaximumProperty.OverrideDefaultValue<VariableBoxFloat>(float.MaxValue);
+        MinimumProperty.OverrideDefaultValue<VariableBoxFloat>(float.MinValue);
+        StepProperty.OverrideDefaultValue<VariableBoxFloat>(1);
     }
 
     protected override bool ParseText(string? text, out float number) =>
@@ -298,15 +298,15 @@ public class NumericFloatUpDown : NumericUpDownBase<float>
     protected override float? Minus(float? a, float? b) => a - b;
 }
 
-public class NumericDecimalUpDown : NumericUpDownBase<decimal>
+public class VariableBoxDecimal : NumericUpDownBase<decimal>
 {
     protected override Type StyleKeyOverride { get; } = typeof(NumericUpDown);
 
-    static NumericDecimalUpDown()
+    static VariableBoxDecimal()
     {
-        MaximumProperty.OverrideDefaultValue<NumericDecimalUpDown>(decimal.MaxValue);
-        MinimumProperty.OverrideDefaultValue<NumericDecimalUpDown>(decimal.MinValue);
-        StepProperty.OverrideDefaultValue<NumericDecimalUpDown>(1);
+        MaximumProperty.OverrideDefaultValue<VariableBoxDecimal>(decimal.MaxValue);
+        MinimumProperty.OverrideDefaultValue<VariableBoxDecimal>(decimal.MinValue);
+        StepProperty.OverrideDefaultValue<VariableBoxDecimal>(1);
     }
 
     protected override bool ParseText(string? text, out decimal number) =>
