@@ -1,6 +1,4 @@
-using System.Diagnostics;
 using System.Globalization;
-using System.Net.Mime;
 using System.Windows.Input;
 using Avalonia;
 using Avalonia.Controls;
@@ -12,7 +10,6 @@ using Avalonia.Input;
 using Avalonia.Interactivity;
 using Avalonia.Layout;
 using VariableBox.Common;
-using VariableBox.Controls;
 
 namespace VariableBox.Controls;
 
@@ -192,13 +189,21 @@ public abstract class NumericUpDown : TemplatedControl/*, IClearControl*/
         protected set => SetValue(IsEditingValidProperty, value);
     }
 
-    public static readonly StyledProperty<bool> IsEditingProperty =
-    AvaloniaProperty.Register<NumericUpDown, bool>(nameof(IsEditing), false);
+    public static readonly StyledProperty<bool> IsEditingProperty = AvaloniaProperty.Register<NumericUpDown, bool>(nameof(IsEditing), false);
 
     public bool IsEditing
     {
         get => GetValue(IsEditingProperty);
-        protected set => SetValue(IsEditingProperty, value);
+        protected set => SetValue(IsEditingProperty, value && IsEnableEditingIndicator);
+    }
+
+    public static readonly StyledProperty<bool> IsEnableEditingIndicatorProperty =
+        AvaloniaProperty.Register<NumericUpDown, bool>(nameof(IsEnableEditingIndicator), true, false, BindingMode.TwoWay);
+
+    public bool IsEnableEditingIndicator
+    {
+        get => GetValue(IsEnableEditingIndicatorProperty);
+        set => SetValue(IsEnableEditingIndicatorProperty, value);
     }
 
     public event EventHandler<SpinEventArgs>? Spinned;
@@ -210,8 +215,16 @@ public abstract class NumericUpDown : TemplatedControl/*, IClearControl*/
         IsReadOnlyProperty.Changed.AddClassHandler<NumericUpDown, bool>((o, args) => o.OnIsReadOnlyChanged(args));
         TextConverterProperty.Changed.AddClassHandler<NumericUpDown>((o, e) => o.OnFormatChange(e));
         AllowDragProperty.Changed.AddClassHandler<NumericUpDown, bool>((o, e) => o.OnAllowDragChange(e));
+
         IsShowReadButtonProperty.Changed.AddClassHandler<NumericUpDown, bool>((o, e) => o.OnReadWriteShowChange(e));
         IsShowWriteButtonProperty.Changed.AddClassHandler<NumericUpDown, bool>((o, e) => o.OnReadWriteShowChange(e));
+
+        IsEnableEditingIndicatorProperty.Changed.AddClassHandler<NumericUpDown, bool>((o, e) => o.OnIsEnableEditingIndicatorChanged(e));
+    }
+
+    private void OnIsEnableEditingIndicatorChanged(AvaloniaPropertyChangedEventArgs<bool> e)
+    {
+        IsEditing = IsEditing && IsEnableEditingIndicator;
     }
 
     private void OnReadWriteShowChange(AvaloniaPropertyChangedEventArgs<bool> e)
@@ -306,6 +319,7 @@ public abstract class NumericUpDown : TemplatedControl/*, IClearControl*/
     private void OnTextBoxTextChanged(object? sender, TextChangedEventArgs e)
     {
         CheckContextIsChangedAndValid((sender as TextBox).Text, ref ed, ref edv);
+
         IsEditing = ed;
         IsEditingValid = edv;
     }
