@@ -37,7 +37,7 @@
                     Width="{Binding Width}"
                     HorizontalAlignment="{Binding HorizontalAlignment}"
                     HorizontalContentAlignment="{Binding HorizontalContentAlignment}"
-                    AllowDrag="{Binding AllowDrag}"
+                    IsAllowDrag="{Binding IsAllowDrag}"
                     AllowSpin="{Binding AllowSpin}"
                     Command="{Binding TrythisCommand}"
                     FontFamily="{Binding FontFamily, Mode=OneWay}"
@@ -108,7 +108,7 @@
                     Value="3" />
                 <v:NumericIntUpDown
                     Name="Drag_Int"
-                    AllowDrag="True"
+                    IsAllowDrag="True"
                     InnerLeftContent="Drag"
                     Step="1"
                     Watermark="Input Value"
@@ -119,7 +119,7 @@
                 <!--  =================this is error usage  -->
                 <v:NumericUIntUpDown
                     Name="uint_HexNumber"
-                    AllowDrag="False"
+                    IsAllowDrag="False"
                     FormatString="{}{0:X8}"
                     InnerLeftContent="HexNumber"
                     ParsingNumberStyle="HexNumber"
@@ -131,7 +131,7 @@
                 <v:NumericUIntUpDown
                     Name="uint_AllowHexSpecifier"
                     HorizontalContentAlignment="Right"
-                    AllowDrag="False"
+                    IsAllowDrag="False"
                     FontFamily="Consolas"
                     FormatString="{}{0:X8}"
                     InnerLeftContent="AllowHexSpecifier"
@@ -143,7 +143,7 @@
                 <v:NumericUIntUpDown
                     Name="Consolas_uint"
                     HorizontalContentAlignment="Right"
-                    AllowDrag="False"
+                    IsAllowDrag="False"
                     FontFamily="Consolas"
                     FormatString="X8"
                     InnerLeftContent="0x"
@@ -156,7 +156,7 @@
                 <v:NumericUIntUpDown
                     Name="Read_uint"
                     HorizontalContentAlignment="Right"
-                    AllowDrag="False"
+                    IsAllowDrag="False"
                     FontFamily="Consolas"
                     FormatString="X8"
                     InnerLeftContent="0x"
@@ -170,7 +170,7 @@
                 <v:NumericUIntUpDown
                     Name="Write_uint"
                     HorizontalContentAlignment="Right"
-                    AllowDrag="False"
+                    IsAllowDrag="False"
                     FontFamily="Consolas"
                     FormatString="X8"
                     InnerLeftContent="0x"
@@ -184,7 +184,7 @@
                 <v:NumericUIntUpDown
                     Name="RW_uint"
                     HorizontalContentAlignment="Right"
-                    AllowDrag="False"
+                    IsAllowDrag="False"
                     FontFamily="Consolas"
                     FormatString="X8"
                     InnerLeftContent="0x"
@@ -207,7 +207,7 @@
 
             <CheckBox Content="AutoWidth" IsChecked="{Binding AutoWidth}" />
             <v:NumericDoubleUpDown
-                AllowDrag="True"
+                IsAllowDrag="True"
                 InnerLeftContent="Width"
                 IsEnabled="{Binding !AutoWidth}"
                 Value="{Binding Width}" />
@@ -255,7 +255,7 @@
 
             <CheckBox Content="IsEnable" IsChecked="{Binding IsEnable}" />
             <CheckBox Content="AllowSpin" IsChecked="{Binding AllowSpin}" />
-            <CheckBox Content="AllowDrag" IsChecked="{Binding AllowDrag}" />
+            <CheckBox Content="IsAllowDrag" IsChecked="{Binding IsAllowDrag}" />
             <CheckBox Content="ShowButtonSpinner" IsChecked="{Binding ShowButtonSpinner}" />
 
             <CheckBox Content="IsReadOnly" IsChecked="{Binding IsReadOnly}" />

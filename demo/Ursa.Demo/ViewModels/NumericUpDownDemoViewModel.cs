@@ -15,7 +15,7 @@ public partial class NumericUpDownDemoViewModel : ObservableObject
     [ObservableProperty] private double _Width = Double.NaN;
     [ObservableProperty] private uint _Value;
     [ObservableProperty] private string _FontFamily = "Consolas";
-    [ObservableProperty] private bool _AllowDrag = false;
+    [ObservableProperty] private bool _IsAllowDrag = false;
     [ObservableProperty] private bool _IsReadOnly = false;
 
     [ObservableProperty] private Array _Array_HorizontalAlignment;

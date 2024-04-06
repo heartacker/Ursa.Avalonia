@@ -43,13 +43,13 @@ public abstract class NumericUpDown : TemplatedControl/*, IClearControl*/
     protected internal bool _canDecrease = true;
 
 
-    public static readonly StyledProperty<bool> AllowDragProperty = AvaloniaProperty.Register<NumericUpDown, bool>(
-        nameof(AllowDrag), defaultBindingMode: BindingMode.TwoWay);
+    public static readonly StyledProperty<bool> IsAllowDragProperty = AvaloniaProperty.Register<NumericUpDown, bool>(
+        nameof(IsAllowDrag), defaultBindingMode: BindingMode.TwoWay);
 
-    public bool AllowDrag
+    public bool IsAllowDrag
     {
-        get => GetValue(AllowDragProperty);
-        set => SetValue(AllowDragProperty, value);
+        get => GetValue(IsAllowDragProperty);
+        set => SetValue(IsAllowDragProperty, value);
     }
 
     public static readonly StyledProperty<bool> IsReadOnlyProperty = AvaloniaProperty.Register<NumericUpDown, bool>(
@@ -214,7 +214,7 @@ public abstract class NumericUpDown : TemplatedControl/*, IClearControl*/
         FormatStringProperty.Changed.AddClassHandler<NumericUpDown>((o, e) => o.OnFormatChange(e));
         IsReadOnlyProperty.Changed.AddClassHandler<NumericUpDown, bool>((o, args) => o.OnIsReadOnlyChanged(args));
         TextConverterProperty.Changed.AddClassHandler<NumericUpDown>((o, e) => o.OnFormatChange(e));
-        AllowDragProperty.Changed.AddClassHandler<NumericUpDown, bool>((o, e) => o.OnAllowDragChange(e));
+        IsAllowDragProperty.Changed.AddClassHandler<NumericUpDown, bool>((o, e) => o.OnIsAllowDragChange(e));
 
         IsShowReadButtonProperty.Changed.AddClassHandler<NumericUpDown, bool>((o, e) => o.OnReadWriteShowChange(e));
         IsShowWriteButtonProperty.Changed.AddClassHandler<NumericUpDown, bool>((o, e) => o.OnReadWriteShowChange(e));
@@ -232,7 +232,7 @@ public abstract class NumericUpDown : TemplatedControl/*, IClearControl*/
         IsReadWriteButtonShow = IsShowReadButton || IsShowWriteButton;
     }
 
-    private void OnAllowDragChange(AvaloniaPropertyChangedEventArgs<bool> args)
+    private void OnIsAllowDragChange(AvaloniaPropertyChangedEventArgs<bool> args)
     {
         IsVisibleProperty.SetValue(args.NewValue.Value, _dragPanel);
     }
@@ -286,7 +286,7 @@ public abstract class NumericUpDown : TemplatedControl/*, IClearControl*/
         }
 
         _dragPanel = e.NameScope.Find<Panel>(PART_DragPanel);
-        IsVisibleProperty.SetValue(AllowDrag, _dragPanel);
+        IsVisibleProperty.SetValue(IsAllowDrag, _dragPanel);
         PointerPressedEvent.AddHandler(OnDragPanelPointerPressed, _dragPanel);
         PointerMovedEvent.AddHandler(OnDragPanelPointerMoved, _dragPanel);
         PointerReleasedEvent.AddHandler(OnDragPanelPointerReleased, _dragPanel);
@@ -331,7 +331,7 @@ public abstract class NumericUpDown : TemplatedControl/*, IClearControl*/
             CommitInput(true);
         }
         base.OnLostFocus(e);
-        if (AllowDrag && _dragPanel is not null)
+        if (IsAllowDrag && _dragPanel is not null)
         {
             _dragPanel.IsVisible = true;
         }
@@ -347,7 +347,7 @@ public abstract class NumericUpDown : TemplatedControl/*, IClearControl*/
 
         if (e.Key == Key.Escape)
         {
-            if (AllowDrag && _dragPanel is not null)
+            if (IsAllowDrag && _dragPanel is not null)
             {
                 _dragPanel.IsVisible = true;
                 // _dragPanel.Focus();
@@ -360,7 +360,7 @@ public abstract class NumericUpDown : TemplatedControl/*, IClearControl*/
     private void OnDragPanelPointerPressed(object sender, PointerPressedEventArgs e)
     {
         _point = e.GetPosition(this);
-        if (e.ClickCount == 2 && _dragPanel is not null && AllowDrag)
+        if (e.ClickCount == 2 && _dragPanel is not null && IsAllowDrag)
         {
             IsVisibleProperty.SetValue(false, _dragPanel);
             _textBox?.Focus();
@@ -386,7 +386,7 @@ public abstract class NumericUpDown : TemplatedControl/*, IClearControl*/
 
     private void OnDragPanelPointerMoved(object sender, PointerEventArgs e)
     {
-        if (!AllowDrag || IsReadOnly) return;
+        if (!IsAllowDrag || IsReadOnly) return;
         if (!e.GetCurrentPoint(this).Properties.IsLeftButtonPressed) return;
         var point = e.GetPosition(this);
         var delta = point - _point;
