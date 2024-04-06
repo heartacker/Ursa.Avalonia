@@ -3,6 +3,7 @@ using Avalonia.Controls.ApplicationLifetimes;
 using Avalonia.Markup.Xaml;
 using VariableBox.Demo.ViewModels;
 using VariableBox.Demo.Views;
+using HotAvalonia;
 
 namespace VariableBox.Demo;
 
@@ -10,6 +11,7 @@ public partial class App : Application
 {
     public override void Initialize()
     {
+        this.EnableHotReload();
         AvaloniaXamlLoader.Load(this);
     }
 

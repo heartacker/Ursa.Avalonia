@@ -20,11 +20,11 @@
     </ItemGroup>
 
     <ItemGroup>
-        <PackageReference Include="Avalonia.Android" Version="$(AvaloniaVersion)"/>
-        <PackageReference Include="Xamarin.AndroidX.Core.SplashScreen" Version="1.0.1.1"/>
+        <PackageReference Include="Avalonia.Android" Version="$(AvaloniaVersion)" />
+        <PackageReference Include="Xamarin.AndroidX.Core.SplashScreen" Version="1.0.1.6" />
     </ItemGroup>
 
     <ItemGroup>
-        <ProjectReference Include="..\Ursa.Demo\Ursa.Demo.csproj"/>
+        <ProjectReference Include="..\Ursa.Demo\Ursa.Demo.csproj" />
     </ItemGroup>
 </Project>
