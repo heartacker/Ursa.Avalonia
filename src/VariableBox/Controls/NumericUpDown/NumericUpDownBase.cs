@@ -123,13 +123,13 @@ public abstract class NumericUpDown : TemplatedControl/*, IClearControl*/
         set => SetValue(TextConverterProperty, value);
     }
 
-    public static readonly StyledProperty<bool> AllowSpinProperty = AvaloniaProperty.Register<NumericUpDown, bool>(
-        nameof(AllowSpin), true);
+    public static readonly StyledProperty<bool> IsAllowSpinProperty = AvaloniaProperty.Register<NumericUpDown, bool>(
+        nameof(IsAllowSpin), true);
 
-    public bool AllowSpin
+    public bool IsAllowSpin
     {
-        get => GetValue(AllowSpinProperty);
-        set => SetValue(AllowSpinProperty, value);
+        get => GetValue(IsAllowSpinProperty);
+        set => SetValue(IsAllowSpinProperty, value);
     }
 
     public static readonly StyledProperty<bool> ShowButtonSpinnerProperty =
@@ -422,7 +422,7 @@ public abstract class NumericUpDown : TemplatedControl/*, IClearControl*/
 
     private void OnSpin(object sender, SpinEventArgs e)
     {
-        if (AllowSpin && !IsReadOnly)
+        if (IsAllowSpin && !IsReadOnly)
         {
             var spin = !e.UsingMouseWheel;
             spin |= _textBox is { IsFocused: true };

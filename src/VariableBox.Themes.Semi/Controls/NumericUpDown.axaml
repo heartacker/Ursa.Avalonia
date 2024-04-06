@@ -70,7 +70,7 @@
                             MinWidth="0"
                             HorizontalContentAlignment="Stretch"
                             VerticalContentAlignment="Stretch"
-                            AllowSpin="{TemplateBinding AllowSpin}"
+                            AllowSpin="{TemplateBinding IsAllowSpin}"
                             Background="{TemplateBinding Background}"
                             BorderBrush="{TemplateBinding BorderBrush}"
                             BorderThickness="{TemplateBinding BorderThickness}"

@@ -38,7 +38,7 @@
                     HorizontalAlignment="{Binding HorizontalAlignment}"
                     HorizontalContentAlignment="{Binding HorizontalContentAlignment}"
                     IsAllowDrag="{Binding IsAllowDrag}"
-                    AllowSpin="{Binding AllowSpin}"
+                    IsAllowSpin="{Binding IsAllowSpin}"
                     Command="{Binding TrythisCommand}"
                     FontFamily="{Binding FontFamily, Mode=OneWay}"
                     FormatString="{Binding FormatString}"
@@ -237,7 +237,7 @@
 
             <v:NumericUIntUpDown
                 Name="nudV"
-                AllowSpin="True"
+                IsAllowSpin="True"
                 InnerLeftContent="Value"
                 IsEnabled="True"
                 IsReadOnly="False"
@@ -254,7 +254,7 @@
                 Value="{Binding Step}" />
 
             <CheckBox Content="IsEnable" IsChecked="{Binding IsEnable}" />
-            <CheckBox Content="AllowSpin" IsChecked="{Binding AllowSpin}" />
+            <CheckBox Content="IsAllowSpin" IsChecked="{Binding IsAllowSpin}" />
             <CheckBox Content="IsAllowDrag" IsChecked="{Binding IsAllowDrag}" />
             <CheckBox Content="ShowButtonSpinner" IsChecked="{Binding ShowButtonSpinner}" />
 

@@ -28,7 +28,7 @@ public partial class NumericUpDownDemoViewModel : ObservableObject
     [ObservableProperty] private string _FormatString = "X8";
     [ObservableProperty] private Array _Array_ParsingNumberStyle;
     [ObservableProperty] private NumberStyles _ParsingNumberStyle = NumberStyles.AllowHexSpecifier;
-    [ObservableProperty] private bool _AllowSpin = true;
+    [ObservableProperty] private bool _IsAllowSpin = true;
     [ObservableProperty] private bool _ShowButtonSpinner = true;
 
     [ObservableProperty] private UInt32 _Maximum = UInt32.MaxValue;
