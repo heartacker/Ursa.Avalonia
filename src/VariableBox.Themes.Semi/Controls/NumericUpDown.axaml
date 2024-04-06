@@ -95,7 +95,8 @@
                                     HorizontalAlignment="Stretch"
                                     VerticalAlignment="Stretch"
                                     Background="Transparent"
-                                    Cursor="SizeAll" />
+                                    Cursor="SizeAll"
+                                    IsVisible="{TemplateBinding IsAllowDrag}" />
                                 <Button
                                     Name="PART_ClearButton"
                                     Margin="0,0,8,0"

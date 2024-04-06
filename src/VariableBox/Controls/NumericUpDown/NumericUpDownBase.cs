@@ -326,14 +326,14 @@ public abstract class NumericUpDown : TemplatedControl/*, IClearControl*/
 
     protected override void OnLostFocus(RoutedEventArgs e)
     {
-        if (IsUpdateValueWhenLostFocus)
-        {
-            CommitInput(true);
-        }
         base.OnLostFocus(e);
         if (IsAllowDrag && _dragPanel is not null)
         {
             _dragPanel.IsVisible = true;
+        }
+        if (IsUpdateValueWhenLostFocus)
+        {
+            CommitInput(true);
         }
     }
 
@@ -934,7 +934,10 @@ public abstract class NumericUpDownBase<T> : NumericUpDown where T : struct, ICo
     protected virtual T? ConvertTextToValue(string? text)
     {
         T? result;
-        if (string.IsNullOrWhiteSpace(text)) return null;
+        if (string.IsNullOrWhiteSpace(text))
+        {
+            throw new InvalidDataException("Input string IsNullOrWhiteSpace.");
+        };
         if (TextConverter != null)
         {
             var valueFromText = TextConverter.Convert(text, typeof(T?), null, CultureInfo.CurrentCulture);
