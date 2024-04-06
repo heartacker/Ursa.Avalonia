@@ -7,7 +7,7 @@
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
         <LangVersion>latest</LangVersion>
-        <Version>0.0.1-beta20240404</Version>
+        <Version>0.0.1-beta20240406</Version>
         <Authors>heartacker</Authors>
         <PackageId>VariableBox.Avalonia</PackageId>
         <PackageIcon></PackageIcon>
