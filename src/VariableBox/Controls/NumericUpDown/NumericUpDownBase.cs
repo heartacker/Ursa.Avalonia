@@ -283,6 +283,7 @@ public abstract class NumericUpDown : TemplatedControl/*, IClearControl*/
         if (_textBox != null)
         {
             _textBox.TextChanged += OnTextBoxTextChanged;
+            _textBox.KeyDown += OnTextBoxKeyDown;
         }
 
         _dragPanel = e.NameScope.Find<Panel>(PART_DragPanel);
@@ -337,16 +338,17 @@ public abstract class NumericUpDown : TemplatedControl/*, IClearControl*/
         }
     }
 
+    private void OnTextBoxKeyDown(object? sender, KeyEventArgs e)
+    {
+        //OnKeyDown(e);
+        //e.Handled = true;
+    }
+
     protected override void OnKeyDown(KeyEventArgs e)
     {
-        if (e.Key == Key.Enter)
-        {
-            var commitSuccess = CommitInput(true);
-            e.Handled = !commitSuccess;
-        }
-
         if (e.Key == Key.Escape)
         {
+            SyncTextAndValue(fromTextToValue: false, text: null, forceTextUpdate: true);// recover the value
             if (IsAllowDrag && _dragPanel is not null)
             {
                 _dragPanel.IsVisible = true;
@@ -354,6 +356,25 @@ public abstract class NumericUpDown : TemplatedControl/*, IClearControl*/
                 _textBox?.ClearSelection();
                 _spinner?.Focus();
             }
+        }
+        if (e.Key == Key.Enter)
+        {
+            if (IsEditing)
+            {
+                var commitSuccess = CommitInput(true);
+                e.Handled = !commitSuccess;
+            }
+            else
+            {
+                if (e.KeyModifiers == KeyModifiers.Alt)
+                {
+                    OnWrite(this, e);
+                }
+            }
+        }
+        else  if (e.Key == Key.OemQuotes && e.KeyModifiers == KeyModifiers.Alt)
+        {
+            OnRead(this, e);
         }
     }
 
