@@ -74,7 +74,7 @@ public partial class NumericUpDownDemoViewModel : ObservableObject
         Array_HorizontalContentAlignment = Enum.GetValues(typeof(HorizontalAlignment));
         Array_HorizontalAlignment = Enum.GetValues(typeof(HorizontalAlignment));
         Array_ParsingNumberStyle = Enum.GetValues(typeof(NumberStyles));
-        // NumericUIntUpDown numericUIntUpDown;
+        // VariableBoxUInt numericUIntUpDown;
         // TextBox textBox;
 
     }

@@ -24,8 +24,8 @@ public partial class NumericUpDownDemo : UserControl
     private void Numd_ReadRequested(object? sender, RoutedEventArgs e)
     {
         Trace.WriteLine(e.Source);
-        Trace.WriteLine(sender as NumericUIntUpDown);
-        var val = (sender as NumericUIntUpDown).Value;
+        Trace.WriteLine(sender as VariableBoxUInt);
+        var val = (sender as VariableBoxUInt).Value;
         var a = (uint)random.Next(0, 100);
         vm.ReadRequestedUpdateText = $"ReadRequested,Old={val}, ChangeTo={a}";
         vm.Value = a;

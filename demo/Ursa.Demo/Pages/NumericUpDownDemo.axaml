@@ -32,17 +32,17 @@
                 Grid.ColumnSpan="1"
                 Margin="10"
                 HorizontalAlignment="Stretch">
-                <v:NumericUIntUpDown
+                <v:VariableBoxUInt
                     Name="numd"
                     Width="{Binding Width}"
                     HorizontalAlignment="{Binding HorizontalAlignment}"
                     HorizontalContentAlignment="{Binding HorizontalContentAlignment}"
-                    IsAllowDrag="{Binding IsAllowDrag}"
-                    IsAllowSpin="{Binding IsAllowSpin}"
                     Command="{Binding TrythisCommand}"
                     FontFamily="{Binding FontFamily, Mode=OneWay}"
                     FormatString="{Binding FormatString}"
                     InnerLeftContent="{Binding InnerLeftContent}"
+                    IsAllowDrag="{Binding IsAllowDrag}"
+                    IsAllowSpin="{Binding IsAllowSpin}"
                     IsEnableEditingIndicator="{Binding IsEnableEditingIndicator}"
                     IsEnabled="{Binding IsEnable}"
                     IsReadOnly="{Binding IsReadOnly}"
@@ -89,27 +89,27 @@
             Margin="10"
             HorizontalAlignment="Left">
             <StackPanel Grid.Row="1">
-                <v:NumericIntUpDown
+                <v:VariableBoxInt
                     Name="input"
                     Classes="ClearButton"
                     InnerLeftContent="Age"
                     Step="1"
                     Watermark="Input Value"
                     Value="2" />
-                <v:NumericDoubleUpDown
+                <v:VariableBoxDouble
                     Name="inputDouble"
                     EmptyInputValue="1"
                     Step="0.5"
                     Value="3.1" />
-                <v:NumericByteUpDown
+                <v:VariableBoxByte
                     Name="inputByte"
                     EmptyInputValue="1"
                     Step="1"
                     Value="3" />
-                <v:NumericIntUpDown
+                <v:VariableBoxInt
                     Name="Drag_Int"
-                    IsAllowDrag="True"
                     InnerLeftContent="Drag"
+                    IsAllowDrag="True"
                     Step="1"
                     Watermark="Input Value"
                     Value="2" />
@@ -117,49 +117,49 @@
                 <!--  hex demo  -->
 
                 <!--  =================this is error usage  -->
-                <v:NumericUIntUpDown
+                <v:VariableBoxUInt
                     Name="uint_HexNumber"
-                    IsAllowDrag="False"
                     FormatString="{}{0:X8}"
                     InnerLeftContent="HexNumber"
+                    IsAllowDrag="False"
                     ParsingNumberStyle="HexNumber"
                     Step="1"
                     Watermark="Input Value"
                     Value="2" />
 
                 <!--  =================we should use AllowHexSpecifier  -->
-                <v:NumericUIntUpDown
+                <v:VariableBoxUInt
                     Name="uint_AllowHexSpecifier"
                     HorizontalContentAlignment="Right"
-                    IsAllowDrag="False"
                     FontFamily="Consolas"
                     FormatString="{}{0:X8}"
                     InnerLeftContent="AllowHexSpecifier"
+                    IsAllowDrag="False"
                     ParsingNumberStyle="AllowHexSpecifier"
                     Step="1"
                     Watermark="AllowHexSpecifier"
                     Value="2" />
 
-                <v:NumericUIntUpDown
+                <v:VariableBoxUInt
                     Name="Consolas_uint"
                     HorizontalContentAlignment="Right"
-                    IsAllowDrag="False"
                     FontFamily="Consolas"
                     FormatString="X8"
                     InnerLeftContent="0x"
+                    IsAllowDrag="False"
                     ParsingNumberStyle="AllowHexSpecifier"
                     Step="1"
                     Watermark="AllowHexSpecifier"
                     Value="2" />
 
                 <!--<TextBlock Text="{Binding #Read_uint.Value, StringFormat='IsShowReadButton {0}, hex={0:X}'}" />-->
-                <v:NumericUIntUpDown
+                <v:VariableBoxUInt
                     Name="Read_uint"
                     HorizontalContentAlignment="Right"
-                    IsAllowDrag="False"
                     FontFamily="Consolas"
                     FormatString="X8"
                     InnerLeftContent="0x"
+                    IsAllowDrag="False"
                     IsShowReadButton="True"
                     ParsingNumberStyle="AllowHexSpecifier"
                     Step="1"
@@ -167,13 +167,13 @@
                     Value="2" />
 
                 <!--<TextBox Text="{Binding #Write_uint.Value, StringFormat='IsShowWriteButton {0}, hex={0:X}'}" />-->
-                <v:NumericUIntUpDown
+                <v:VariableBoxUInt
                     Name="Write_uint"
                     HorizontalContentAlignment="Right"
-                    IsAllowDrag="False"
                     FontFamily="Consolas"
                     FormatString="X8"
                     InnerLeftContent="0x"
+                    IsAllowDrag="False"
                     IsShowWriteButton="True"
                     ParsingNumberStyle="AllowHexSpecifier"
                     Step="1"
@@ -181,13 +181,13 @@
                     Value="2" />
 
                 <!--<TextBox Text="{Binding #RW_uint.Value, StringFormat='R W Button {0}, hex={0:X}'}" />-->
-                <v:NumericUIntUpDown
+                <v:VariableBoxUInt
                     Name="RW_uint"
                     HorizontalContentAlignment="Right"
-                    IsAllowDrag="False"
                     FontFamily="Consolas"
                     FormatString="X8"
                     InnerLeftContent="0x"
+                    IsAllowDrag="False"
                     IsShowReadButton="True"
                     IsShowWriteButton="True"
                     ParsingNumberStyle="AllowHexSpecifier"
@@ -206,9 +206,9 @@
             Orientation="Vertical">
 
             <CheckBox Content="AutoWidth" IsChecked="{Binding AutoWidth}" />
-            <v:NumericDoubleUpDown
-                IsAllowDrag="True"
+            <v:VariableBoxDouble
                 InnerLeftContent="Width"
+                IsAllowDrag="True"
                 IsEnabled="{Binding !AutoWidth}"
                 Value="{Binding Width}" />
 
@@ -235,17 +235,17 @@
             <Label Content="ParsingNumberStyle" />
             <ComboBox ItemsSource="{Binding Array_ParsingNumberStyle}" SelectedItem="{Binding ParsingNumberStyle}" />
 
-            <v:NumericUIntUpDown
+            <v:VariableBoxUInt
                 Name="nudV"
-                IsAllowSpin="True"
                 InnerLeftContent="Value"
+                IsAllowSpin="True"
                 IsEnabled="True"
                 IsReadOnly="False"
                 Value="{Binding Value, Mode=TwoWay}" />
 
-            <v:NumericUIntUpDown InnerLeftContent="Max" Value="{Binding Maximum}" />
+            <v:VariableBoxUInt InnerLeftContent="Max" Value="{Binding Maximum}" />
 
-            <v:NumericUIntUpDown InnerLeftContent="Min" Value="{Binding Minimum}" />
+            <v:VariableBoxUInt InnerLeftContent="Min" Value="{Binding Minimum}" />
 
             <Label Content="{Binding Step, StringFormat='Step {0}'}" />
             <Slider
