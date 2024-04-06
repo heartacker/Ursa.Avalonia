@@ -48,6 +48,8 @@ public partial class NumericUpDownDemoViewModel : ObservableObject
 
     [ObservableProperty] private bool _IsShowReadButton = false;
     [ObservableProperty] private bool _IsShowWriteButton = false;
+    [ObservableProperty] private bool _IsEnableEditingIndicator = false;
+
 
     uint v = 0;
     [RelayCommand]
