@@ -25,10 +25,10 @@ dotnet add package VariableBox.Avalonia
 ```
 
 You can now use Ursa controls in your Avalonia Application.
-```xaml
+```xml
 <Window
     ...
-    xmlns:v="VariableBox"
+    xmlns:v="VariableBoxUInt"
     ...>
     <StackPanel Margin="20">
         <u:VariableBox Value="{Binding Value}" 
