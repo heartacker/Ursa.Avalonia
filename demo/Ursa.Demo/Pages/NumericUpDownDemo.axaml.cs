@@ -28,13 +28,13 @@ public partial class NumericUpDownDemo : UserControl
         hex_normal = !hex_normal;
         if (hex_normal)
         {
-            vm.InnerLeftContent = "0x";
+            vm.HeaderContent = "0x";
             vm.ParsingNumberStyle = System.Globalization.NumberStyles.AllowHexSpecifier;
             vm.FormatString = "{}{0:X8}";
         }
         else
         {
-            vm.InnerLeftContent = "v:";
+            vm.HeaderContent = "v:";
             vm.ParsingNumberStyle = System.Globalization.NumberStyles.Any;
             vm.FormatString = "{}{0:D8}";
         }

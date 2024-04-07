@@ -40,7 +40,7 @@
                     Command="{Binding TrythisCommand}"
                     FontFamily="{Binding FontFamily, Mode=OneWay}"
                     FormatString="{Binding FormatString}"
-                    HeaderContent="{Binding InnerLeftContent}"
+                    HeaderContent="{Binding HeaderContent}"
                     HeaderDoubleTaped="Numd_HeaderDoubleTaped"
                     IsAllowDrag="{Binding IsAllowDrag}"
                     IsAllowSpin="{Binding IsAllowSpin}"
@@ -219,9 +219,9 @@
             <ComboBox ItemsSource="{Binding Array_HorizontalContentAlignment}" SelectedItem="{Binding HorizontalContentAlignment}" />
 
             <TextBox
-                InnerLeftContent="InnerLeftContent"
+                InnerLeftContent="HeaderContent"
                 InnerRightContent="obj"
-                Text="{Binding InnerLeftContent}" />
+                Text="{Binding HeaderContent}" />
 
             <TextBox InnerLeftContent="Watermark" Text="{Binding Watermark}" />
 
