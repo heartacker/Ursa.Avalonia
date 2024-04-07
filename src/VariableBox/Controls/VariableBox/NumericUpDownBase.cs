@@ -297,6 +297,7 @@ public abstract class NumericUpDown : TemplatedControl/* , Control */ /*, IClear
 
         TextBox.TextChangedEvent.AddHandler(OnTextBoxTextChanged, _textBox);
         KeyDownEvent.AddHandler(OnTextBoxKeyDown, RoutingStrategies.Direct | RoutingStrategies.Bubble, true, _textBox);
+        DoubleTappedEvent.AddHandler(OnTextBoxDoubleTapped, RoutingStrategies.Direct | RoutingStrategies.Bubble, true, _textBox);
 
         _dragPanel = e.NameScope.Find<Panel>(PART_DragPanel);
         IsVisibleProperty.SetValue(IsAllowDrag, _dragPanel);
@@ -318,6 +319,16 @@ public abstract class NumericUpDown : TemplatedControl/* , Control */ /*, IClear
         RepeatButton.ClickEvent.AddHandler(OnReadBefore, _repeatReadButton);
         RepeatButton.ClickEvent.AddHandler(OnWrite, _repeatWriteButton);
     }
+
+    private void OnTextBoxDoubleTapped(object? sender, TappedEventArgs e)
+    {
+        // is double tapped on HeaderContent 
+        if (e.Source is TextBlock)
+        {
+            OnHeaderDoubleTaped(sender, e);
+        }
+    }
+    protected abstract void OnHeaderDoubleTaped(object? sender, TappedEventArgs e);
 
     protected abstract void OnWrite(object sender, RoutedEventArgs e);
 
@@ -728,6 +739,32 @@ public abstract class NumericUpDownBase<T> : NumericUpDown where T : struct, ICo
 
     #endregion
 
+    #region HeaderDoubleTapedCommand
+
+    public static readonly StyledProperty<ICommand?> HeaderDoubleTapedCommandProperty = AvaloniaProperty.Register<NumericUpDownBase<T>, ICommand?>(
+        nameof(HeaderDoubleTapedCommand));
+
+    public ICommand? HeaderDoubleTapedCommand
+    {
+        get => GetValue(HeaderDoubleTapedCommandProperty);
+        set => SetValue(HeaderDoubleTapedCommandProperty, value);
+    }
+
+    /// <summary>
+    /// Defines the <see cref="HeaderDoubleTaped"/> event.
+    /// </summary>
+    public static readonly RoutedEvent<RoutedEventArgs> HeaderDoubleTapedEvent =
+        RoutedEvent.Register<NumericUpDown, RoutedEventArgs>(nameof(HeaderDoubleTaped), RoutingStrategies.Bubble);
+
+    public event EventHandler<RoutedEventArgs>? HeaderDoubleTaped
+    {
+        add => AddHandler(HeaderDoubleTapedEvent, value);
+        remove => RemoveHandler(HeaderDoubleTapedEvent, value);
+    }
+
+    #endregion
+
+
     private void InvokeCommand(ICommand? command, object? cp)
     {
         if (command != null && command.CanExecute(cp))
@@ -781,6 +818,12 @@ public abstract class NumericUpDownBase<T> : NumericUpDown where T : struct, ICo
     private void RaiseReadEventCommand(RoutedEventArgs e)
     {
         InvokeCommand(this.ReadCommand, this.ReadCommandParameter ?? Value);
+        RaiseEvent(e);
+    }
+
+    private void RaiseHeaderDoubleTapedEventCommand(TappedEventArgs e)
+    {
+        InvokeCommand(this.HeaderDoubleTapedCommand, Value);
         RaiseEvent(e);
     }
 
@@ -883,6 +926,12 @@ public abstract class NumericUpDownBase<T> : NumericUpDown where T : struct, ICo
     {
         var ve = new ValueChangedEventArgs<T>(ValueChangedEvent, Value, Value);
         RaiseEventCommand(ve);
+    }
+
+    protected override void OnHeaderDoubleTaped(object? sender, TappedEventArgs e)
+    {
+        e.RoutedEvent = HeaderDoubleTapedEvent;
+        RaiseHeaderDoubleTapedEventCommand(e);
     }
 
 
