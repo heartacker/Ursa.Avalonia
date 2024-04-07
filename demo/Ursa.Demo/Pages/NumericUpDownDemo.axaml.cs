@@ -20,6 +20,7 @@ public partial class NumericUpDownDemo : UserControl
         numd.ValueChanged += Numd_ValueChanged;
         numd.ReadRequested += Numd_ReadRequested;
         //numd.HeaderDoubleTaped += Numd_HeaderDoubleTaped;
+        numd.FontFamily= "Consolas";
     }
 
     bool hex_normal = true;
@@ -30,13 +31,13 @@ public partial class NumericUpDownDemo : UserControl
         {
             vm.HeaderContent = "0x";
             vm.ParsingNumberStyle = System.Globalization.NumberStyles.AllowHexSpecifier;
-            vm.FormatString = "{}{0:X8}";
+            vm.FormatString = "{0:X8}"; // if write in axaml, please use {} frist。but in code, you dont need to add {}
         }
         else
         {
             vm.HeaderContent = "v:";
             vm.ParsingNumberStyle = System.Globalization.NumberStyles.Any;
-            vm.FormatString = "{}{0:D8}";
+            vm.FormatString = "{0:D10}";
         }
     }
 
