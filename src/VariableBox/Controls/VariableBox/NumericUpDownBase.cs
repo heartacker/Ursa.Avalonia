@@ -160,7 +160,7 @@ public abstract class NumericUpDown : TemplatedControl/* , Control */ /*, IClear
     }
 
     public static readonly StyledProperty<bool> IsReadWriteButtonShowProperty =
-        AvaloniaProperty.Register<NumericUpDown, bool>(nameof(IsReadWriteButtonShow), false);
+        AvaloniaProperty.Register<NumericUpDown, bool>(nameof(IsReadWriteButtonShow), true);
 
     public bool IsReadWriteButtonShow
     {
