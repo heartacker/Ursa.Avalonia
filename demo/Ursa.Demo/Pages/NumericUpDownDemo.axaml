@@ -98,12 +98,10 @@
                     Value="2" />
                 <v:VariableBoxDouble
                     Name="inputDouble"
-                    EmptyInputValue="1"
                     Step="0.5"
                     Value="3.1" />
                 <v:VariableBoxByte
                     Name="inputByte"
-                    EmptyInputValue="1"
                     Step="1"
                     Value="3" />
                 <v:VariableBoxInt
