@@ -742,10 +742,10 @@ public abstract class NumericUpDownBase<T> : NumericUpDown where T : struct, ICo
     /// <summary>
     /// Defines the <see cref="HeaderDoubleTaped"/> event.
     /// </summary>
-    public static readonly RoutedEvent<RoutedEventArgs> HeaderDoubleTapedEvent =
-        RoutedEvent.Register<NumericUpDown, RoutedEventArgs>(nameof(HeaderDoubleTaped), RoutingStrategies.Bubble);
+    public static readonly RoutedEvent<TappedEventArgs> HeaderDoubleTapedEvent =
+        RoutedEvent.Register<NumericUpDown, TappedEventArgs>(nameof(HeaderDoubleTaped), RoutingStrategies.Bubble);
 
-    public event EventHandler<RoutedEventArgs>? HeaderDoubleTaped
+    public event EventHandler<TappedEventArgs>? HeaderDoubleTaped
     {
         add => AddHandler(HeaderDoubleTapedEvent, value);
         remove => RemoveHandler(HeaderDoubleTapedEvent, value);
