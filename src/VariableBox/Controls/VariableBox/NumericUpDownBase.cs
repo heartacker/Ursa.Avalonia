@@ -654,17 +654,6 @@ public abstract class NumericUpDownBase<T> : NumericUpDown where T : struct, ICo
         set => SetValue(StepProperty, value);
     }
 
-    public static readonly StyledProperty<T?> EmptyInputValueProperty =
-        AvaloniaProperty.Register<NumericUpDownBase<T>, T?>(
-            nameof(EmptyInputValue), defaultValue: null);
-
-    public T? EmptyInputValue
-    {
-        get => GetValue(EmptyInputValueProperty);
-        set => SetValue(EmptyInputValueProperty, value);
-    }
-
-
     #region command
     public static readonly StyledProperty<ICommand?> CommandProperty = AvaloniaProperty.Register<NumericUpDownBase<T>, ICommand?>(nameof(Command));
 
@@ -1003,10 +992,6 @@ public abstract class NumericUpDownBase<T> : NumericUpDown where T : struct, ICo
         try
         {
             newValue = ConvertTextToValue(text);
-            if (EmptyInputValue is not null && newValue is null)
-            {
-                newValue = EmptyInputValue;
-            }
             if (!Equals(newValue, Value))
             {
                 if (Equals(Clamp(newValue, Maximum, Minimum), newValue)) // check and same
@@ -1080,7 +1065,7 @@ public abstract class NumericUpDownBase<T> : NumericUpDown where T : struct, ICo
 
     public override void Clear()
     {
-        SetCurrentValue(ValueProperty, EmptyInputValue);
+        //SetCurrentValue(ValueProperty, EmptyInputValue);
         SyncTextAndValue(false, forceTextUpdate: true);
     }
 }
