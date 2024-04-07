@@ -41,6 +41,7 @@
                     FontFamily="{Binding FontFamily, Mode=OneWay}"
                     FormatString="{Binding FormatString}"
                     HeaderContent="{Binding InnerLeftContent}"
+                    HeaderDoubleTaped="Numd_HeaderDoubleTaped"
                     IsAllowDrag="{Binding IsAllowDrag}"
                     IsAllowSpin="{Binding IsAllowSpin}"
                     IsEnableEditingIndicator="{Binding IsEnableEditingIndicator}"

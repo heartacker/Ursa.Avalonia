@@ -1,5 +1,6 @@
 ﻿using Avalonia;
 using Avalonia.Controls;
+using Avalonia.Input;
 using Avalonia.Interactivity;
 using Avalonia.Markup.Xaml;
 using System;
@@ -18,24 +19,24 @@ public partial class NumericUpDownDemo : UserControl
         DataContext = vm = new NumericUpDownDemoViewModel();
         numd.ValueChanged += Numd_ValueChanged;
         numd.ReadRequested += Numd_ReadRequested;
-        numd.HeaderDoubleTaped += Numd_HeaderDoubleTaped;
+        //numd.HeaderDoubleTaped += Numd_HeaderDoubleTaped;
     }
 
     bool hex_normal = true;
-    private void Numd_HeaderDoubleTaped(object? sender, RoutedEventArgs e)
+    private void Numd_HeaderDoubleTaped(object? sender, TappedEventArgs e)
     {
         hex_normal = !hex_normal;
         if (hex_normal)
         {
             vm.InnerLeftContent = "0x";
             vm.ParsingNumberStyle = System.Globalization.NumberStyles.AllowHexSpecifier;
-            vm.FormatString = "{0:X8}";
+            vm.FormatString = "{}{0:X8}";
         }
         else
         {
             vm.InnerLeftContent = "v:";
             vm.ParsingNumberStyle = System.Globalization.NumberStyles.Any;
-            vm.FormatString = "{0:D8}";
+            vm.FormatString = "{}{0:D8}";
         }
     }
 
