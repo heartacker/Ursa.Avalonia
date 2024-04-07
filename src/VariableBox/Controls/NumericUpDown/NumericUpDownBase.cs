@@ -18,7 +18,7 @@ namespace VariableBox.Controls;
 [TemplatePart(PART_DragPanel, typeof(Panel))]
 [TemplatePart(PART_RepeatRead, typeof(RepeatButton))]
 [TemplatePart(PART_RepeatWrite, typeof(RepeatButton))]
-public abstract class NumericUpDown : TemplatedControl/*, IClearControl*/
+public abstract class NumericUpDown : TemplatedControl/* , Control */ /*, IClearControl*/
 {
     public const string PART_Spinner = "PART_Spinner";
     public const string PART_TextBox = "PART_TextBox";
@@ -280,11 +280,14 @@ public abstract class NumericUpDown : TemplatedControl/*, IClearControl*/
 
         _textBox = e.NameScope.Find<TextBox>(PART_TextBox);
         TextBox.IsReadOnlyProperty.SetValue(IsReadOnly, _textBox);
-        if (_textBox != null)
-        {
-            _textBox.TextChanged += OnTextBoxTextChanged;
-            _textBox.KeyDown += OnTextBoxKeyDown;
-        }
+
+        // if (_textBox != null)
+        // {
+        //     _textBox.TextChanged += OnTextBoxTextChanged;
+        // }
+
+        TextBox.TextChangedEvent.AddHandler(OnTextBoxTextChanged, _textBox);
+        KeyDownEvent.AddHandler(OnTextBoxKeyDown, RoutingStrategies.Direct | RoutingStrategies.Bubble, true, _textBox);
 
         _dragPanel = e.NameScope.Find<Panel>(PART_DragPanel);
         IsVisibleProperty.SetValue(IsAllowDrag, _dragPanel);
@@ -340,12 +343,17 @@ public abstract class NumericUpDown : TemplatedControl/*, IClearControl*/
 
     private void OnTextBoxKeyDown(object? sender, KeyEventArgs e)
     {
-        //OnKeyDown(e);
+        // System.Diagnostics.Trace.WriteLine(e.Key);
+        if (e.Key == Key.Left || e.Key == Key.Right || e.Key == Key.Up || e.Key == Key.Down)
+        {
+            this.OnKeyDown(e);
+        }
         //e.Handled = true;
     }
 
     protected override void OnKeyDown(KeyEventArgs e)
     {
+        // System.Diagnostics.Trace.WriteLine(e.Key);
         if (e.Key == Key.Escape)
         {
             SyncTextAndValue(fromTextToValue: false, text: null, forceTextUpdate: true);// recover the value
@@ -357,25 +365,32 @@ public abstract class NumericUpDown : TemplatedControl/*, IClearControl*/
                 _spinner?.Focus();
             }
         }
-        if (e.Key == Key.Enter)
+        if (e.Key == Key.Enter || (e.Key == Key.Right && e.KeyModifiers == KeyModifiers.Alt))
         {
             if (IsEditing)
             {
                 var commitSuccess = CommitInput(true);
                 e.Handled = !commitSuccess;
             }
-            else
+            else if (e.KeyModifiers == KeyModifiers.Alt)
             {
-                if (e.KeyModifiers == KeyModifiers.Alt)
-                {
-                    OnWrite(this, e);
-                }
+                OnWrite(this, e);
+                e.Handled = true;
             }
         }
-        else  if (e.Key == Key.OemQuotes && e.KeyModifiers == KeyModifiers.Alt)
+        else if (e.Key == Key.Left && e.KeyModifiers == KeyModifiers.Alt)
         {
             OnRead(this, e);
+             e.Handled = true;
         }
+        else
+        {
+
+        }
+        // else if (e.Key == Key.Right && e.KeyModifiers == KeyModifiers.Alt)
+        // {
+        //     OnWrite(this, e);
+        // }
     }
 
     private void OnDragPanelPointerPressed(object sender, PointerPressedEventArgs e)
