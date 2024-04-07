@@ -6,6 +6,7 @@
     RequestedThemeVariant="Light">
     <Application.Styles>
         <FluentTheme />
+        <SimpleTheme />
         <StyleInclude Source="avares://Semi.Avalonia/Themes/Index.axaml" />
         <!--  later apply  -->
         <v-semi:SemiTheme Locale="zh-CN" />
