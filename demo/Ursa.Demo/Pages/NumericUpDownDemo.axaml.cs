@@ -27,13 +27,14 @@ public partial class NumericUpDownDemo : UserControl
         Trace.WriteLine(sender as VariableBoxUInt);
         var val = (sender as VariableBoxUInt).Value;
         var a = (uint)random.Next(0, 100);
-        vm.ReadRequestedUpdateText = $"ReadRequested,Old={val}, ChangeTo={a}";
+        vm.ReadRequestedUpdateText = $"ReadRequested,Old={val} => {a}";
         vm.Value = a;
     }
 
 
+    int i = 0;
     private void Numd_ValueChanged(object? sender, ValueChangedEventArgs<uint> e)
     {
-        vm.ValueChangedUpdateText = $"ValueChanged,Old={e.OldValue} =>{e.NewValue}";
+        vm.ValueChangedUpdateText = $"ValueChanged_{i++},Old={e.OldValue} => {e.NewValue}";
     }
 }

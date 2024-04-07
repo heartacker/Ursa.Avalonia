@@ -62,7 +62,8 @@ public static class RoutedEventExtension
         }
     }
 
-    public static void AddHandler<TArgs>(this RoutedEvent<TArgs> routedEvent, EventHandler<TArgs> handler, RoutingStrategies strategies = RoutingStrategies.Direct | RoutingStrategies.Bubble, bool handledEventsToo = false, params Interactive?[] controls) where TArgs : RoutedEventArgs
+    public static void AddHandler<TArgs>(this RoutedEvent<TArgs> routedEvent, EventHandler<TArgs> handler,
+    RoutingStrategies strategies = RoutingStrategies.Direct | RoutingStrategies.Bubble, bool handledEventsToo = false, params Interactive?[] controls) where TArgs : RoutedEventArgs
     {
         for (int i = 0; i < controls.Length; i++)
         {
