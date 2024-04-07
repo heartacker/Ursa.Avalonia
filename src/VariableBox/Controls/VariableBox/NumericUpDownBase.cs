@@ -309,15 +309,14 @@ public abstract class NumericUpDown : TemplatedControl/* , Control */ /*, IClear
 
     protected void OnApplyTemplateReadWrite(TemplateAppliedEventArgs e)
     {
-        RepeatButton.ClickEvent.RemoveHandler(OnRead, _repeatReadButton);
+        RepeatButton.ClickEvent.RemoveHandler(OnReadBefore, _repeatReadButton);
         RepeatButton.ClickEvent.RemoveHandler(OnWrite, _repeatWriteButton);
 
         _repeatReadButton = e.NameScope.Find<RepeatButton>(PART_RepeatRead);
         _repeatWriteButton = e.NameScope.Find<RepeatButton>(PART_RepeatWrite);
 
-        RepeatButton.ClickEvent.AddHandler(OnRead, _repeatReadButton);
+        RepeatButton.ClickEvent.AddHandler(OnReadBefore, _repeatReadButton);
         RepeatButton.ClickEvent.AddHandler(OnWrite, _repeatWriteButton);
-
     }
 
     protected abstract void OnWrite(object sender, RoutedEventArgs e);
