@@ -1,58 +1,83 @@
-# Ursa
+# VariableBox
+
+[![GitHub stars](https://img.shields.io/github/stars/heartacker/VariableBox.Avalonia?style=for-the-badge)](https://github.com/heartacker/VariableBox.Avalonia)
+[![GitHub release](https://img.shields.io/github/v/release/heartacker/VariableBox.Avalonia?style=for-the-badge)](https://github.com/heartacker/VariableBox.Avalonia/releases)
+[![Nuget](https://img.shields.io/nuget/v/VariableBox.Avalonia?style=for-the-badge)](https://www.nuget.org/packages/VariableBox.Avalonia)
+![Nuget](https://img.shields.io/nuget/dt/VariableBox.Avalonia?style=for-the-badge)
+[![Nuget](https://img.shields.io/nuget/v/VariableBox.Avalonia.Themes.Semi?style=for-the-badge)](https://www.nuget.org/packages/VariableBox.Avalonia.Themes.Semi)
+![Nuget](https://img.shields.io/nuget/dt/VariableBox.Avalonia.Themes.Semi?style=for-the-badge)
 
 <p align="center">
-    <img src="./assets/Ursa.svg" alt="drawing" width="150" />
+    <img src="./assets/light_demo.png" alt="drawing" width="150" />
 </p>
 
-Ursa is a UI library for building cross-platform UIs with Avalonia UI.
+VariableBox is a UI library for building cross-platform UIs with Avalonia UI.
 
-![Demo](./assets/demo.png)
+![Demo](./assets/light_demo.png)
 
 ## How to use
-1. Ursa
+
+### VariableBox
 
 Add nuget package:
 ```bash
-dotnet add package Irihi.Ursa
+dotnet add package VariableBox.Avalonia
 ```
 
 You can now use Ursa controls in your Avalonia Application.
 ```xaml
 <Window
     ...
-    xmlns:u="https://irihi.tech/ursa"
+    xmlns:v="VariableBox"
     ...>
     <StackPanel Margin="20">
-        <u:ButtonGroup Classes="Solid Warning">
-            <Button Content="Hello" />
-            <Button Content="World" />
-        </u:ButtonGroup>
-        <u:TagInput />
+        <u:VariableBox Value="{Binding Value}" 
+            FormatString="X8"
+            HeaderContent="0x"
+            ParsingNumberStyle="AllowHexSpecifier"
+            Step="2"
+            IsEnableEditingIndicator="True"
+            />
     </StackPanel>
 </Window>
 ```
 
-![Demo](./assets/demo.jpg)
 
-2. Ursa.Themes.Semi
+### VariableBox.Avalonia.Themes.Semi
 
-To make Ursa controls show up in your application, you need to reference to a theme package designed for Ursa. 
-Ursa.Themes.Semi is a theme package for Ursa inspired by Semi Design. You can add it to your project by following steps.
+To make Ursa controls show up in your application, you need to reference to a theme package designed for VariableBox.
 
-Add nuget package:
+- `VariableBox.Avalonia.Themes.Semi` is a theme package for Ursa inspired by Semi Design. 
+   >you need to `add package Semi.Avalonia` frist
+
+- also `VariableBox.Avalonia.Themes.Semi` is compact with `<SimpleTheme/>`
+- `VariableBox.Avalonia.Themes.Semi` is NOT compact with `<FluentTheme/>`
+
+You can add it to your project by following steps.
+
+1. Add nuget package:
+
 ```bash
-dotnet add package Semi.Avalonia --version 11.0.7
-dotnet add package Irihi.Ursa.Themes.Semi
+dotnet add package Semi.Avalonia
+dotnet add package VariableBox.Avalonia.Themes.Semi
 ```
 
-Include Styles in application:
-```xaml
+2. Include Styles in application:
+```xml
 <Application...
-    xmlns:u-semi="https://irihi.tech/ursa/themes/semi"
+    xmlns:v-semi="using:VariableBox.Avalonia.Themes.Semi"
     ....>
 
     <Application.Styles>
+        <!-- compact theme -->
+
+        <!-- 1. SimpleTheme -->
+        <SimpleTheme/>
+
+        <!-- 2. Semi, recommand -->
         <StyleInclude Source="avares://Semi.Avalonia/Themes/Index.axaml" />
-        <u-semi:SemiTheme Locale="zh-CN"/>
+
+        <!-- set this theme -->
+        <v-semi:SemiTheme Locale="zh-CN"/>
     </Application.Styles>
 ```
