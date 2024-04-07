@@ -69,13 +69,13 @@ public abstract class NumericUpDown : TemplatedControl/* , Control */ /*, IClear
         set => SetValue(HorizontalContentAlignmentProperty, value);
     }
 
-    public static readonly StyledProperty<object?> InnerLeftContentProperty = AvaloniaProperty.Register<NumericUpDown, object?>(
-        nameof(InnerLeftContent));
+    public static readonly StyledProperty<object?> HeaderContentProperty = AvaloniaProperty.Register<NumericUpDown, object?>(
+        nameof(HeaderContent));
 
-    public object? InnerLeftContent
+    public object? HeaderContent
     {
-        get => GetValue(InnerLeftContentProperty);
-        set => SetValue(InnerLeftContentProperty, value);
+        get => GetValue(HeaderContentProperty);
+        set => SetValue(HeaderContentProperty, value);
     }
 
     public static readonly StyledProperty<string?> WatermarkProperty = AvaloniaProperty.Register<NumericUpDown, string?>(

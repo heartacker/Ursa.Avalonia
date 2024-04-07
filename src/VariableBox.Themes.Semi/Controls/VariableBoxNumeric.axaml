@@ -86,7 +86,7 @@
                                     DataValidationErrors.Errors="{ReflectionBinding $parent[NumericUpDown].(DataValidationErrors.Errors)}"
                                     FontSize="{TemplateBinding FontSize}"
                                     Foreground="{TemplateBinding Foreground}"
-                                    InnerLeftContent="{TemplateBinding InnerLeftContent}"
+                                    InnerLeftContent="{TemplateBinding HeaderContent}"
                                     TextWrapping="NoWrap"
                                     Theme="{DynamicResource NonErrorTextBox}"
                                     Watermark="{TemplateBinding Watermark}" />
