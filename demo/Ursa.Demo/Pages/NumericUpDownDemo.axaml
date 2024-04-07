@@ -40,7 +40,7 @@
                     Command="{Binding TrythisCommand}"
                     FontFamily="{Binding FontFamily, Mode=OneWay}"
                     FormatString="{Binding FormatString}"
-                    InnerLeftContent="{Binding InnerLeftContent}"
+                    HeaderContent="{Binding InnerLeftContent}"
                     IsAllowDrag="{Binding IsAllowDrag}"
                     IsAllowSpin="{Binding IsAllowSpin}"
                     IsEnableEditingIndicator="{Binding IsEnableEditingIndicator}"
@@ -92,7 +92,7 @@
                 <v:VariableBoxInt
                     Name="input"
                     Classes="ClearButton"
-                    InnerLeftContent="Age"
+                    HeaderContent="Age"
                     Step="1"
                     Watermark="Input Value"
                     Value="2" />
@@ -108,7 +108,7 @@
                     Value="3" />
                 <v:VariableBoxInt
                     Name="Drag_Int"
-                    InnerLeftContent="Drag"
+                    HeaderContent="Drag"
                     IsAllowDrag="True"
                     Step="1"
                     Watermark="Input Value"
@@ -120,7 +120,7 @@
                 <v:VariableBoxUInt
                     Name="uint_HexNumber"
                     FormatString="{}{0:X8}"
-                    InnerLeftContent="HexNumber"
+                    HeaderContent="HexNumber"
                     IsAllowDrag="False"
                     ParsingNumberStyle="HexNumber"
                     Step="1"
@@ -133,7 +133,7 @@
                     HorizontalContentAlignment="Right"
                     FontFamily="Consolas"
                     FormatString="{}{0:X8}"
-                    InnerLeftContent="AllowHexSpecifier"
+                    HeaderContent="AllowHexSpecifier"
                     IsAllowDrag="False"
                     ParsingNumberStyle="AllowHexSpecifier"
                     Step="1"
@@ -145,7 +145,7 @@
                     HorizontalContentAlignment="Right"
                     FontFamily="Consolas"
                     FormatString="X8"
-                    InnerLeftContent="0x"
+                    HeaderContent="0x"
                     IsAllowDrag="False"
                     ParsingNumberStyle="AllowHexSpecifier"
                     Step="1"
@@ -158,7 +158,7 @@
                     HorizontalContentAlignment="Right"
                     FontFamily="Consolas"
                     FormatString="X8"
-                    InnerLeftContent="0x"
+                    HeaderContent="0x"
                     IsAllowDrag="False"
                     IsShowReadButton="True"
                     ParsingNumberStyle="AllowHexSpecifier"
@@ -172,7 +172,7 @@
                     HorizontalContentAlignment="Right"
                     FontFamily="Consolas"
                     FormatString="X8"
-                    InnerLeftContent="0x"
+                    HeaderContent="0x"
                     IsAllowDrag="False"
                     IsShowWriteButton="True"
                     ParsingNumberStyle="AllowHexSpecifier"
@@ -186,7 +186,7 @@
                     HorizontalContentAlignment="Right"
                     FontFamily="Consolas"
                     FormatString="X8"
-                    InnerLeftContent="0x"
+                    HeaderContent="0x"
                     IsAllowDrag="False"
                     IsShowReadButton="True"
                     IsShowWriteButton="True"
@@ -207,7 +207,7 @@
 
             <CheckBox Content="AutoWidth" IsChecked="{Binding AutoWidth}" />
             <v:VariableBoxDouble
-                InnerLeftContent="Width"
+                HeaderContent="Width"
                 IsAllowDrag="True"
                 IsEnabled="{Binding !AutoWidth}"
                 Value="{Binding Width}" />
@@ -237,15 +237,15 @@
 
             <v:VariableBoxUInt
                 Name="nudV"
-                InnerLeftContent="Value"
+                HeaderContent="Value"
                 IsAllowSpin="True"
                 IsEnabled="True"
                 IsReadOnly="False"
                 Value="{Binding Value, Mode=TwoWay}" />
 
-            <v:VariableBoxUInt InnerLeftContent="Max" Value="{Binding Maximum}" />
+            <v:VariableBoxUInt HeaderContent="Max" Value="{Binding Maximum}" />
 
-            <v:VariableBoxUInt InnerLeftContent="Min" Value="{Binding Minimum}" />
+            <v:VariableBoxUInt HeaderContent="Min" Value="{Binding Minimum}" />
 
             <Label Content="{Binding Step, StringFormat='Step {0}'}" />
             <Slider
