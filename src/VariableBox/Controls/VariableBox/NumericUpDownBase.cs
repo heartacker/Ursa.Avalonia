@@ -1,4 +1,4 @@
-using System.Globalization;
+﻿using System.Globalization;
 using System.Windows.Input;
 using Avalonia;
 using Avalonia.Controls;
@@ -142,7 +142,7 @@ public abstract class NumericUpDown : TemplatedControl/* , Control */ /*, IClear
     }
 
     public static readonly StyledProperty<bool> IsShowReadButtonProperty =
-        AvaloniaProperty.Register<NumericUpDown, bool>(nameof(IsShowReadButton), false);
+        AvaloniaProperty.Register<NumericUpDown, bool>(nameof(IsShowReadButton), true);
 
     public bool IsShowReadButton
     {
@@ -151,7 +151,7 @@ public abstract class NumericUpDown : TemplatedControl/* , Control */ /*, IClear
     }
 
     public static readonly StyledProperty<bool> IsShowWriteButtonProperty =
-        AvaloniaProperty.Register<NumericUpDown, bool>(nameof(IsShowWriteButton), false);
+        AvaloniaProperty.Register<NumericUpDown, bool>(nameof(IsShowWriteButton), true);
 
     public bool IsShowWriteButton
     {
@@ -322,7 +322,7 @@ public abstract class NumericUpDown : TemplatedControl/* , Control */ /*, IClear
 
     private void OnTextBoxDoubleTapped(object? sender, TappedEventArgs e)
     {
-        // is double tapped on HeaderContent 
+        // is double tapped on HeaderContent
         if (e.Source is TextBlock)
         {
             OnHeaderDoubleTaped(sender, e);
