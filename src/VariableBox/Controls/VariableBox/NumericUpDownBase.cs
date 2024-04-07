@@ -189,12 +189,16 @@ public abstract class NumericUpDown : TemplatedControl/* , Control */ /*, IClear
         protected set => SetValue(IsEditingValidProperty, value);
     }
 
-    public static readonly StyledProperty<bool> IsEditingProperty = AvaloniaProperty.Register<NumericUpDown, bool>(nameof(IsEditing), false);
+    public static readonly StyledProperty<bool> IsEditingVisiableProperty = AvaloniaProperty.Register<NumericUpDown, bool>(nameof(IsEditingVisiable), false);
 
-    public bool IsEditing
+    /// <summary>
+    /// 指示当前是否正在编辑，如果为true，则不允许用户点击 <see cref="OnSpin"/>  和 read <see cref="OnReadBefore"/>
+    ///  todo we should not allow user to spin or read, disable those control
+    /// </summary>
+    public bool IsEditingVisiable
     {
-        get => GetValue(IsEditingProperty);
-        protected set => SetValue(IsEditingProperty, value && IsEnableEditingIndicator);
+        get => GetValue(IsEditingVisiableProperty);
+        protected set => SetValue(IsEditingVisiableProperty, value && IsEnableEditingIndicator);
     }
 
     public static readonly StyledProperty<bool> IsEnableEditingIndicatorProperty =
@@ -224,7 +228,7 @@ public abstract class NumericUpDown : TemplatedControl/* , Control */ /*, IClear
 
     private void OnIsEnableEditingIndicatorChanged(AvaloniaPropertyChangedEventArgs<bool> e)
     {
-        IsEditing = IsEditing && IsEnableEditingIndicator;
+        IsEditingVisiable = IsEditing && IsEnableEditingIndicator;
     }
 
     private void OnReadWriteShowChange(AvaloniaPropertyChangedEventArgs<bool> e)

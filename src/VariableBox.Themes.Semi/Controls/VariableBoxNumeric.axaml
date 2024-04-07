@@ -110,7 +110,7 @@
                                     Margin="2,1,2,0"
                                     Background="Transparent"
                                     Content="*"
-                                    IsVisible="{TemplateBinding IsEditing}" />
+                                    IsVisible="{TemplateBinding IsEditingVisiable}" />
                             </Panel>
                         </ButtonSpinner>
 
