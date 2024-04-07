@@ -201,6 +201,11 @@ public abstract class NumericUpDown : TemplatedControl/* , Control */ /*, IClear
         protected set => SetValue(IsEditingVisiableProperty, value && IsEnableEditingIndicator);
     }
 
+    /// <summary>
+    /// 指示当前是否正在编辑，如果为true，则不允许用户点击 <see cref="OnSpin"/>  和 read <see cref="OnReadBefore"/>
+    /// </summary>
+    public bool IsEditing { get; set; }
+
     public static readonly StyledProperty<bool> IsEnableEditingIndicatorProperty =
         AvaloniaProperty.Register<NumericUpDown, bool>(nameof(IsEnableEditingIndicator), true, false, BindingMode.TwoWay);
 
@@ -317,6 +322,12 @@ public abstract class NumericUpDown : TemplatedControl/* , Control */ /*, IClear
 
     protected abstract void OnWrite(object sender, RoutedEventArgs e);
 
+    private void OnReadBefore(object sender, RoutedEventArgs e)
+    {
+        if (IsEditing) return;
+        OnRead(sender, e);
+    }
+
     protected abstract void OnRead(object sender, RoutedEventArgs e);
 
     protected abstract void CheckContextIsChangedAndValid(string? text, ref bool isediting, ref bool valid);
@@ -328,7 +339,7 @@ public abstract class NumericUpDown : TemplatedControl/* , Control */ /*, IClear
     {
         CheckContextIsChangedAndValid((sender as TextBox).Text, ref ed, ref edv);
 
-        IsEditing = ed;
+        IsEditingVisiable = IsEditing = ed;
         IsEditingValid = edv;
     }
 
@@ -384,8 +395,8 @@ public abstract class NumericUpDown : TemplatedControl/* , Control */ /*, IClear
         }
         else if (e.Key == Key.Left && e.KeyModifiers == KeyModifiers.Alt)
         {
-            OnRead(this, e);
-             e.Handled = true;
+            OnReadBefore(this, e);
+            e.Handled = true;
         }
         else
         {
@@ -462,6 +473,7 @@ public abstract class NumericUpDown : TemplatedControl/* , Control */ /*, IClear
 
     private void OnSpin(object sender, SpinEventArgs e)
     {
+        if (IsEditing) return;
         if (IsAllowSpin && !IsReadOnly)
         {
             var spin = !e.UsingMouseWheel;
