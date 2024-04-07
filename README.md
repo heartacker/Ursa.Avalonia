@@ -50,8 +50,8 @@ To make Ursa controls show up in your application, you need to reference to a th
 - `VariableBox.Avalonia.Themes.Semi` is a theme package for Ursa inspired by Semi Design. 
    >you need to `add package Semi.Avalonia` frist
 
-- also `VariableBox.Avalonia.Themes.Semi` is compact with `<SimpleTheme/>`
-- `VariableBox.Avalonia.Themes.Semi` is NOT compact with `<FluentTheme/>`
+- also `VariableBox.Avalonia.Themes.Semi` is compatible with `<SimpleTheme/>`
+- `VariableBox.Avalonia.Themes.Semi` is NOT compatible with `<FluentTheme/>`
 
 You can add it to your project by following steps.
 
@@ -69,7 +69,7 @@ dotnet add package VariableBox.Avalonia.Themes.Semi
     ....>
 
     <Application.Styles>
-        <!-- compact theme -->
+        <!-- compatible theme -->
 
         <!-- 1. SimpleTheme -->
         <SimpleTheme/>
