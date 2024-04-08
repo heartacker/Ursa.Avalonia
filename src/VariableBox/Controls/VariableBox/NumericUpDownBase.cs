@@ -43,8 +43,8 @@ public abstract class NumericUpDown : TemplatedControl/* , Control */ /*, IClear
     protected internal bool _canDecrease = true;
 
 
-    public static readonly StyledProperty<bool> IsAllowDragProperty = AvaloniaProperty.Register<NumericUpDown, bool>(
-        nameof(IsAllowDrag), defaultBindingMode: BindingMode.TwoWay);
+    public static readonly StyledProperty<bool> IsAllowDragProperty =
+        AvaloniaProperty.Register<NumericUpDown, bool>(nameof(IsAllowDrag), defaultBindingMode: BindingMode.TwoWay);
 
     public bool IsAllowDrag
     {
@@ -52,8 +52,8 @@ public abstract class NumericUpDown : TemplatedControl/* , Control */ /*, IClear
         set => SetValue(IsAllowDragProperty, value);
     }
 
-    public static readonly StyledProperty<bool> IsReadOnlyProperty = AvaloniaProperty.Register<NumericUpDown, bool>(
-        nameof(IsReadOnly), defaultBindingMode: BindingMode.TwoWay);
+    public static readonly StyledProperty<bool> IsReadOnlyProperty =
+        AvaloniaProperty.Register<NumericUpDown, bool>(nameof(IsReadOnly), defaultBindingMode: BindingMode.TwoWay);
 
     public bool IsReadOnly
     {
@@ -69,8 +69,8 @@ public abstract class NumericUpDown : TemplatedControl/* , Control */ /*, IClear
         set => SetValue(HorizontalContentAlignmentProperty, value);
     }
 
-    public static readonly StyledProperty<object?> HeaderContentProperty = AvaloniaProperty.Register<NumericUpDown, object?>(
-        nameof(HeaderContent));
+    public static readonly StyledProperty<object?> HeaderContentProperty =
+        AvaloniaProperty.Register<NumericUpDown, object?>(nameof(HeaderContent));
 
     public object? HeaderContent
     {
@@ -78,8 +78,8 @@ public abstract class NumericUpDown : TemplatedControl/* , Control */ /*, IClear
         set => SetValue(HeaderContentProperty, value);
     }
 
-    public static readonly StyledProperty<string?> WatermarkProperty = AvaloniaProperty.Register<NumericUpDown, string?>(
-        nameof(Watermark));
+    public static readonly StyledProperty<string?> WatermarkProperty =
+        AvaloniaProperty.Register<NumericUpDown, string?>(nameof(Watermark));
 
     public string? Watermark
     {
@@ -87,8 +87,8 @@ public abstract class NumericUpDown : TemplatedControl/* , Control */ /*, IClear
         set => SetValue(WatermarkProperty, value);
     }
 
-    public static readonly StyledProperty<NumberFormatInfo?> NumberFormatProperty = AvaloniaProperty.Register<NumericUpDown, NumberFormatInfo?>(
-        nameof(NumberFormat), defaultValue: NumberFormatInfo.CurrentInfo);
+    public static readonly StyledProperty<NumberFormatInfo?> NumberFormatProperty =
+        AvaloniaProperty.Register<NumericUpDown, NumberFormatInfo?>(nameof(NumberFormat), defaultValue: NumberFormatInfo.CurrentInfo);
 
     public NumberFormatInfo? NumberFormat
     {
@@ -96,8 +96,8 @@ public abstract class NumericUpDown : TemplatedControl/* , Control */ /*, IClear
         set => SetValue(NumberFormatProperty, value);
     }
 
-    public static readonly StyledProperty<string> FormatStringProperty = AvaloniaProperty.Register<NumericUpDown, string>(
-        nameof(FormatString), string.Empty);
+    public static readonly StyledProperty<string> FormatStringProperty =
+        AvaloniaProperty.Register<NumericUpDown, string>(nameof(FormatString), string.Empty);
 
     public string FormatString
     {
@@ -105,8 +105,8 @@ public abstract class NumericUpDown : TemplatedControl/* , Control */ /*, IClear
         set => SetValue(FormatStringProperty, value);
     }
 
-    public static readonly StyledProperty<NumberStyles> ParsingNumberStyleProperty = AvaloniaProperty.Register<NumericUpDown, NumberStyles>(
-        nameof(ParsingNumberStyle), defaultValue: NumberStyles.Any);
+    public static readonly StyledProperty<NumberStyles> ParsingNumberStyleProperty =
+        AvaloniaProperty.Register<NumericUpDown, NumberStyles>(nameof(ParsingNumberStyle), defaultValue: NumberStyles.Any);
 
     public NumberStyles ParsingNumberStyle
     {
@@ -114,8 +114,8 @@ public abstract class NumericUpDown : TemplatedControl/* , Control */ /*, IClear
         set => SetValue(ParsingNumberStyleProperty, value);
     }
 
-    public static readonly StyledProperty<IValueConverter?> TextConverterProperty = AvaloniaProperty.Register<NumericUpDown, IValueConverter?>(
-        nameof(TextConverter));
+    public static readonly StyledProperty<IValueConverter?> TextConverterProperty =
+        AvaloniaProperty.Register<NumericUpDown, IValueConverter?>(nameof(TextConverter));
 
     public IValueConverter? TextConverter
     {
@@ -123,15 +123,17 @@ public abstract class NumericUpDown : TemplatedControl/* , Control */ /*, IClear
         set => SetValue(TextConverterProperty, value);
     }
 
-    public static readonly StyledProperty<bool> IsAllowSpinProperty = AvaloniaProperty.Register<NumericUpDown, bool>(
-        nameof(IsAllowSpin), true);
+    public static readonly StyledProperty<bool> IsAllowSpinProperty =
+        AvaloniaProperty.Register<NumericUpDown, bool>(nameof(IsAllowSpin), true);
 
     public bool IsAllowSpin
     {
         get => GetValue(IsAllowSpinProperty);
         set => SetValue(IsAllowSpinProperty, value);
     }
-
+    /// <summary>
+    /// ! ButtonSpinner
+    /// </summary>
     public static readonly StyledProperty<bool> ShowButtonSpinnerProperty =
         ButtonSpinner.ShowButtonSpinnerProperty.AddOwner<NumericUpDown>();
 
@@ -189,7 +191,8 @@ public abstract class NumericUpDown : TemplatedControl/* , Control */ /*, IClear
         protected set => SetValue(IsEditingValidProperty, value);
     }
 
-    public static readonly StyledProperty<bool> IsEditingVisiableProperty = AvaloniaProperty.Register<NumericUpDown, bool>(nameof(IsEditingVisiable), false);
+    public static readonly StyledProperty<bool> IsEditingVisiableProperty = 
+        AvaloniaProperty.Register<NumericUpDown, bool>(nameof(IsEditingVisiable), false);
 
     /// <summary>
     /// 指示当前是否正在编辑，如果为true，则不允许用户点击 <see cref="OnSpin"/>  和 read <see cref="OnReadBefore"/>
@@ -204,7 +207,7 @@ public abstract class NumericUpDown : TemplatedControl/* , Control */ /*, IClear
     /// <summary>
     /// 指示当前是否正在编辑，如果为true，则不允许用户点击 <see cref="OnSpin"/>  和 read <see cref="OnReadBefore"/>
     /// </summary>
-    public bool IsEditing { get; set; }
+    public bool IsEditing { get; protected set; }
 
     public static readonly StyledProperty<bool> IsEnableEditingIndicatorProperty =
         AvaloniaProperty.Register<NumericUpDown, bool>(nameof(IsEnableEditingIndicator), true, false, BindingMode.TwoWay);
@@ -508,6 +511,7 @@ public abstract class NumericUpDown : TemplatedControl/* , Control */ /*, IClear
     protected abstract void SetValidSpinDirection();
 
     protected abstract void Increase();
+
     protected abstract void Decrease();
 
     protected virtual bool CommitInput(bool forceTextUpdate = false)
@@ -568,6 +572,8 @@ public abstract class NumericUpDownBase<T> : NumericUpDown where T : struct, ICo
         return text;
     }
 
+    #region Values
+
     public static readonly StyledProperty<T?> LastEditingValidValueProperty = AvaloniaProperty.Register<NumericUpDownBase<T>, T?>(
         nameof(LastEditingValidValue), defaultBindingMode: BindingMode.TwoWay);
 
@@ -584,6 +590,15 @@ public abstract class NumericUpDownBase<T> : NumericUpDown where T : struct, ICo
     {
         get => GetValue(ValueProperty);
         set => SetValue(ValueProperty, value);
+    }
+
+    public static readonly StyledProperty<T> StepProperty = AvaloniaProperty.Register<NumericUpDownBase<T>, T>(
+        nameof(Step));
+
+    public T Step
+    {
+        get => GetValue(StepProperty);
+        set => SetValue(StepProperty, value);
     }
 
     public static readonly StyledProperty<T> MaximumProperty = AvaloniaProperty.Register<NumericUpDownBase<T>, T>(
@@ -603,6 +618,8 @@ public abstract class NumericUpDownBase<T> : NumericUpDown where T : struct, ICo
         get => GetValue(MinimumProperty);
         set => SetValue(MinimumProperty, value);
     }
+
+    #endregion
 
     #region Max and Min Coerce
     private static T CoerceMaximum(AvaloniaObject instance, T value)
@@ -645,38 +662,12 @@ public abstract class NumericUpDownBase<T> : NumericUpDown where T : struct, ICo
 
     #endregion
 
-    public static readonly StyledProperty<T> StepProperty = AvaloniaProperty.Register<NumericUpDownBase<T>, T>(
-        nameof(Step));
-
-    public T Step
-    {
-        get => GetValue(StepProperty);
-        set => SetValue(StepProperty, value);
-    }
-
-    #region command
-    public static readonly StyledProperty<ICommand?> CommandProperty = AvaloniaProperty.Register<NumericUpDownBase<T>, ICommand?>(nameof(Command));
-
-    public ICommand? Command
-    {
-        get => GetValue(CommandProperty);
-        set => SetValue(CommandProperty, value);
-    }
-
-    public static readonly StyledProperty<object?> CommandParameterProperty =
-        AvaloniaProperty.Register<NumericUpDownBase<T>, object?>(nameof(CommandParameter));
-
-    public object? CommandParameter
-    {
-        get => this.GetValue(CommandParameterProperty);
-        set => this.SetValue(CommandParameterProperty, value);
-    }
 
     /// <summary>
     /// Defines the <see cref="ValueChanged"/> event.
     /// </summary>
     public static readonly RoutedEvent<ValueChangedEventArgs<T>> ValueChangedEvent =
-        RoutedEvent.Register<NumericUpDown, ValueChangedEventArgs<T>>(nameof(ValueChanged), RoutingStrategies.Bubble);
+        RoutedEvent.Register<NumericUpDownBase<T>, ValueChangedEventArgs<T>>(nameof(ValueChanged), RoutingStrategies.Bubble);
 
     /// <summary>
     /// Raised when the <see cref="Value"/> changes.
@@ -687,12 +678,32 @@ public abstract class NumericUpDownBase<T> : NumericUpDown where T : struct, ICo
         remove => RemoveHandler(ValueChangedEvent, value);
     }
 
+    #region Command
+
+    public static readonly StyledProperty<ICommand?> CommandProperty =
+        AvaloniaProperty.Register<NumericUpDown, ICommand?>(nameof(Command));
+
+    public ICommand? Command
+    {
+        get => GetValue(CommandProperty);
+        set => SetValue(CommandProperty, value);
+    }
+
+    public static readonly StyledProperty<object?> CommandParameterProperty =
+        AvaloniaProperty.Register<NumericUpDown, object?>(nameof(CommandParameter));
+
+    public object? CommandParameter
+    {
+        get => this.GetValue(CommandParameterProperty);
+        set => this.SetValue(CommandParameterProperty, value);
+    }
+
     #endregion
 
     #region ReadCommand
 
-    public static readonly StyledProperty<ICommand?> ReadCommandProperty = AvaloniaProperty.Register<NumericUpDownBase<T>, ICommand?>(
-        nameof(ReadCommand));
+    public static readonly StyledProperty<ICommand?> ReadCommandProperty =
+        AvaloniaProperty.Register<NumericUpDown, ICommand?>(nameof(ReadCommand));
 
     public ICommand? ReadCommand
     {
@@ -701,7 +712,7 @@ public abstract class NumericUpDownBase<T> : NumericUpDown where T : struct, ICo
     }
 
     public static readonly StyledProperty<object?> ReadCommandParameterProperty =
-        AvaloniaProperty.Register<NumericUpDownBase<T>, object?>(nameof(ReadCommandParameter));
+        AvaloniaProperty.Register<NumericUpDown, object?>(nameof(ReadCommandParameter));
 
     public object? ReadCommandParameter
     {
@@ -730,8 +741,8 @@ public abstract class NumericUpDownBase<T> : NumericUpDown where T : struct, ICo
 
     #region HeaderDoubleTapedCommand
 
-    public static readonly StyledProperty<ICommand?> HeaderDoubleTapedCommandProperty = AvaloniaProperty.Register<NumericUpDownBase<T>, ICommand?>(
-        nameof(HeaderDoubleTapedCommand));
+    public static readonly StyledProperty<ICommand?> HeaderDoubleTapedCommandProperty =
+        AvaloniaProperty.Register<NumericUpDown, ICommand?>(nameof(HeaderDoubleTapedCommand));
 
     public ICommand? HeaderDoubleTapedCommand
     {
@@ -753,6 +764,7 @@ public abstract class NumericUpDownBase<T> : NumericUpDown where T : struct, ICo
 
     #endregion
 
+    #region InvokeCommand
 
     private void InvokeCommand(ICommand? command, object? cp)
     {
@@ -761,6 +773,25 @@ public abstract class NumericUpDownBase<T> : NumericUpDown where T : struct, ICo
             command.Execute(cp);
         }
     }
+
+    private void RaiseEventCommand(ValueChangedEventArgs<T> e)
+    {
+        InvokeCommand(this.Command, this.CommandParameter ?? e.NewValue);
+        RaiseEvent(e);
+    }
+
+    private void RaiseReadEventCommand(RoutedEventArgs e)
+    {
+        InvokeCommand(this.ReadCommand, this.ReadCommandParameter ?? Value);
+        RaiseEvent(e);
+    }
+
+    private void RaiseHeaderDoubleTapedEventCommand(TappedEventArgs e)
+    {
+        InvokeCommand(this.HeaderDoubleTapedCommand, Value);
+        RaiseEvent(e);
+    }
+    #endregion
 
     static NumericUpDownBase()
     {
@@ -796,24 +827,6 @@ public abstract class NumericUpDownBase<T> : NumericUpDown where T : struct, ICo
             var e = new ValueChangedEventArgs<T>(ValueChangedEvent, oldValue, newValue);
             RaiseEventCommand(e);
         }
-    }
-
-    private void RaiseEventCommand(ValueChangedEventArgs<T> e)
-    {
-        InvokeCommand(this.Command, this.CommandParameter ?? e.NewValue);
-        RaiseEvent(e);
-    }
-
-    private void RaiseReadEventCommand(RoutedEventArgs e)
-    {
-        InvokeCommand(this.ReadCommand, this.ReadCommandParameter ?? Value);
-        RaiseEvent(e);
-    }
-
-    private void RaiseHeaderDoubleTapedEventCommand(TappedEventArgs e)
-    {
-        InvokeCommand(this.HeaderDoubleTapedCommand, Value);
-        RaiseEvent(e);
     }
 
     protected override void OnApplyTemplate(TemplateAppliedEventArgs e)

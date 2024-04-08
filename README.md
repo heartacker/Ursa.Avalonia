@@ -15,23 +15,51 @@ VariableBox is a UI library for building cross-platform UIs with Avalonia UI.
 
 ![Demo](./assets/light_demo.png)
 
+## Feature
+
+### NumericalUpDown
+
+- all numerical type support
+- spinning updown support
+- get (read) /set (write) support
+- rich formatting support like `hex`, `dec` and `bin`
+- drag support, you can use mouse to drag
+- mouse scroll support
+- shortcut and arrow key support
+  - <kbd>Esc</kbd> for cancel editing
+  - <kbd>Enter</kbd> for trigger
+  - <kbd>up</kbd> for increase
+  - <kbd>down</kbd> for decrease
+  - <kbd>alt+left</kbd> for read
+  - <kbd>alt+right</kbd>/<kbd>alt+enter</kbd>for trigger (force) write
+- identify support
+  - `*` for editing
+  - **red** <font color=red>*</font> for error input
+  - **green** <font color=green>*</font> for right input
+
+### EnumerationUpDown
+
+- [ ] todo
+
 ## How to use
 
 ### VariableBox
 
 Add nuget package:
+
 ```bash
 dotnet add package VariableBox.Avalonia
 ```
 
 You can now use Ursa controls in your Avalonia Application.
+
 ```xml
 <Window
     ...
-    xmlns:v="VariableBoxUInt"
+    xmlns:v="VariableBox"
     ...>
     <StackPanel Margin="20">
-        <u:VariableBox Value="{Binding Value}" 
+        <u:VariableBoxUInt Value="{Binding Value}" 
             FormatString="X8"
             HeaderContent="0x"
             ParsingNumberStyle="AllowHexSpecifier"
@@ -42,12 +70,11 @@ You can now use Ursa controls in your Avalonia Application.
 </Window>
 ```
 
-
 ### VariableBox.Avalonia.Themes.Semi
 
 To make Ursa controls show up in your application, you need to reference to a theme package designed for VariableBox.
 
-- `VariableBox.Avalonia.Themes.Semi` is a theme package for Ursa inspired by Semi Design. 
+- `VariableBox.Avalonia.Themes.Semi` is a theme package for Ursa inspired by Semi Design.
    >you need to `add package Semi.Avalonia` frist
 
 - also `VariableBox.Avalonia.Themes.Semi` is compatible with `<SimpleTheme/>`
@@ -63,6 +90,7 @@ dotnet add package VariableBox.Avalonia.Themes.Semi
 ```
 
 2. Include Styles in application:
+
 ```xml
 <Application...
     xmlns:v-semi="using:VariableBox.Avalonia.Themes.Semi"

@@ -1,6 +1,6 @@
 ﻿<Project>
     <PropertyGroup>
         <AvaloniaVersion>11.0.0</AvaloniaVersion>
-        <VariableBoxVersion>0.0.3-beta20240408</VariableBoxVersion>
+        <VariableBoxVersion>0.0.3-beta202404081</VariableBoxVersion>
     </PropertyGroup>
 </Project>
