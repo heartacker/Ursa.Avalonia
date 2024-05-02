@@ -356,6 +356,11 @@ public abstract class NumericUpDown : TemplatedControl/* , Control */ /*, IClear
         IsEditingValid = edv;
     }
 
+    protected override void OnGotFocus(GotFocusEventArgs e)
+    {
+        base.OnGotFocus(e);
+    }
+
     protected override void OnLostFocus(RoutedEventArgs e)
     {
         base.OnLostFocus(e);
