@@ -6,8 +6,9 @@ public enum ValueChangedReason
     None = 0,
     UserInput = 1,
     OnSpinner = 2,
-    OnRead = 4,
-    OnWrite = 8,
+    OnValueModel = 4,
+    OnRead = 8,
+    OnWrite = 16,
 }
 
 public class ValueChangedEventArgs<T> : RoutedEventArgs where T : struct, IComparable<T>
